@@ -28,9 +28,6 @@ function Profile() {
           </div>
         </div>
       </div>
-      <header className="w-full shadow h-16 bg-white">
-        <h1 className="font-bold p-5">Home</h1>
-      </header>
       <div className="p-6 mb-2 bg-white">
         <div className="flex flex-row">
           <img
@@ -75,9 +72,6 @@ function Profile() {
           </p>
         </article>
       </div>
-      <header className="w-full shadow h-16 bg-white">
-        <h1 className="font-bold p-5">Home</h1>
-      </header>
       <div className="p-6 mb-2 bg-white">
         <div className="flex flex-row">
           <img
@@ -122,9 +116,6 @@ function Profile() {
           </p>
         </article>
       </div>
-      <header className="w-full shadow h-16 bg-white">
-        <h1 className="font-bold p-5">Home</h1>
-      </header>
       <div className="p-6 mb-2 bg-white">
         <div className="flex flex-row">
           <img

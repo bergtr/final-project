@@ -6,6 +6,7 @@ import Profile from "./components/Profile";
 import Bookmarks from "./components/Bookmarks";
 import Settings from "./components/Settings";
 import Sidebar from "./components/Sidebar";
+import Users from "./components/Users"
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 const routes = [
@@ -36,6 +37,7 @@ const routes = [
   },
   {
     path: "/Profile",
+    exact: true,
     header: () => (
       <header className="w-full shadow h-16 bg-white flex flex-row fixed">
         <h1 className="font-bold p-5 w-1/5">App Name</h1>
@@ -45,6 +47,18 @@ const routes = [
     ),
     sidebar: () => <Sidebar />,
     main: () => <Profile />,
+  },
+  {
+    path: "/Profile/:username",
+    header: () => (
+      <header className="w-full shadow h-16 bg-white flex flex-row fixed">
+        <h1 className="font-bold p-5 w-1/5">App Name</h1>
+        <h1 className="font-bold p-5 w-3/5 border-l border-r">Profile</h1>
+        <h1 className="font-bold p-5 w-1/5">Who to Follow</h1>
+      </header>
+    ),
+    sidebar: () => <Sidebar />,
+    main: () => <Users />,
   },
   {
     path: "/Bookmarks",

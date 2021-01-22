@@ -1,8 +1,31 @@
-import React from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import btn_like from "../assets/btn_like.svg";
 import btn_comment from "../assets/btn_comment.svg";
+import axios from "axios";
 
 function Explore() {
+  useEffect(() => {
+    fetchPost();
+  }, []);
+
+  const [posts, setPosts] = useState([]);
+
+  //"https://learning.anshor.co/api/topic"
+
+  const fetchPost = async () => {
+    const requestOptions = {
+      mode: "no-cors",
+      headers: {
+        Authorization:
+          "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczpcL1wvbGVhcm5pbmcuYW5zaG9yLmNvXC9hcGlcL2xvZ2luIiwiaWF0IjoxNjExMzU2NzM2LCJleHAiOjE2MTEzNjAzMzYsIm5iZiI6MTYxMTM1NjczNiwianRpIjoiVXVvOXJ6N2NmVVY1Z0dlYSIsInN1YiI6MywicHJ2IjoiMjNiZDVjODk0OWY2MDBhZGIzOWU3MDFjNDAwODcyZGI3YTU5NzZmNyJ9.NO-HR-EemO9-UORbJW5nhRpVCqjRDieSjIJ3pyU2MIg",
+      },
+    };
+    const response = await axios.get("/topic", requestOptions);
+    const posts = await response.data.data.data;
+    console.log(posts);
+    setPosts(posts);
+  };
+
   return (
     <div>
       <header className="w-full h-16 bg-white">
@@ -26,93 +49,45 @@ function Explore() {
         </button>
       </div>
       <div className="p-6 mb-2 bg-white">
-          <div className="flex flex-row">
-            <img
-              src="https://via.placeholder.com/55"
-              alt="profile"
-              height="55px"
-              width="55px"
-              className="rounded-full"
-            />
-            <p className="p-3">
-              Username <span className>@username</span>
-            </p>
-          </div>
-          <article className="flex flex-col m-1">
-            <h2 className="font-semibold m-2">Title</h2>
-            <div>
+        {posts.map((post) => (
+          <div>
+            <div className="flex flex-row">
               <img
-                className="inline-block p-1"
-                height="32px"
-                width="32px"
-                src={btn_like}
-                alt=""
+                src="https://via.placeholder.com/55"
+                alt="profile"
+                height="55px"
+                width="55px"
+                className="rounded-full"
               />
-              <p className="inline-block p-1">123</p>
-              <img
-                className="inline-block p-1"
-                height="32px"
-                width="32px"
-                src={btn_comment}
-                alt=""
-              />
-              <p className="inline-block p-1">234</p>
+              <p className="p-3">
+                Username <span className>@username</span>
+              </p>
             </div>
-            <p className="mt-2">
-              Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-              Inventore aliquam quam, enim deleniti tenetur qui quibusdam
-              commodi! Maxime ipsam adipisci quisquam hic iusto, similique
-              quidem, porro dicta quam autem rem. Lorem ipsum dolor sit amet
-              consectetur, adipisicing elit. Vel, consectetur inventore nemo
-              sed, incidunt, omnis commodi officiis vero amet sunt dolore eaque
-              dolores facere odit qui unde. Quisquam, perspiciatis et.
-            </p>
-          </article>
-        </div>
-        <div className="p-6 mb-2 bg-white">
-          <div className="flex flex-row">
-            <img
-              src="https://via.placeholder.com/55"
-              alt="profile"
-              height="55px"
-              width="55px"
-              className="rounded-full"
-            />
-            <p className="p-3">
-              Username <span className>@username</span>
-            </p>
+            <article className="flex flex-col m-1 mt-3">
+              <h2 className="font-semibold m-2">{post.title}</h2>
+              <div>
+                <img
+                  className="inline-block p-1"
+                  height="32px"
+                  width="32px"
+                  src={btn_like}
+                  alt=""
+                />
+                <p className="inline-block p-1">{post.like_count}0</p>
+                <img
+                  className="inline-block p-1"
+                  height="32px"
+                  width="32px"
+                  src={btn_comment}
+                  alt=""
+                />
+                <p className="inline-block p-1">234</p>
+              </div>
+              <p className="mt-2">{post.description}</p>
+            </article>
           </div>
-          <article className="flex flex-col m-1">
-            <h2 className="font-semibold m-2">Title</h2>
-            <div>
-              <img
-                className="inline-block p-1"
-                height="32px"
-                width="32px"
-                src={btn_like}
-                alt=""
-              />
-              <p className="inline-block p-1">123</p>
-              <img
-                className="inline-block p-1"
-                height="32px"
-                width="32px"
-                src={btn_comment}
-                alt=""
-              />
-              <p className="inline-block p-1">234</p>
-            </div>
-            <p className="mt-2">
-              Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-              Inventore aliquam quam, enim deleniti tenetur qui quibusdam
-              commodi! Maxime ipsam adipisci quisquam hic iusto, similique
-              quidem, porro dicta quam autem rem. Lorem ipsum dolor sit amet
-              consectetur, adipisicing elit. Vel, consectetur inventore nemo
-              sed, incidunt, omnis commodi officiis vero amet sunt dolore eaque
-              dolores facere odit qui unde. Quisquam, perspiciatis et.
-            </p>
-          </article>
-        </div>
+        ))}
+      </div>
     </div>
   );
 }

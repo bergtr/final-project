@@ -12,7 +12,7 @@ function Settings() {
         <SettingsSidebar />
         <div className="w-full">
           <Switch>
-            <Route path="/settings/username">
+            <Route path="/Settings/username">
               <div className="flex flex-col content-around border-2 border-black">
                 <div className="p-2">
                   <h3 className='py-1'>Current Username</h3>
@@ -28,7 +28,7 @@ function Settings() {
                 </div>
               </div>
             </Route>
-            <Route path="/settings/password">
+            <Route path="/Settings/password">
               <div className="flex flex-col content-around border-2 border-black">
                 <p className="px-2 py-1">Current Password</p>
                 <input
@@ -66,7 +66,7 @@ function Settings() {
                 </div>
               </div>
             </Route>
-            <Route path="/settings/email">
+            <Route path="/Settings/email">
               <div className="flex flex-col content-around border-2 border-black">
                 <div className="p-2">
                   <h3 className='py-1'>Current Email</h3>
