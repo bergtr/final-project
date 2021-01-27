@@ -10,9 +10,9 @@ function Sidebar() {
   const [suggestedUsers, setSuggestedUsers] = useState([]);
 
   const fetchPost = async () => {
-    const response = await axios.get("https://jsonplaceholder.typicode.com/users");
+    const response = await axios.get("https://jsonplaceholder.typicode.com/users?id=1");
     const suggestedUsers = await response.data;
-    console.log(suggestedUsers);
+    // console.log(suggestedUsers);
     setSuggestedUsers(suggestedUsers);
   };
 
@@ -24,7 +24,7 @@ function Sidebar() {
 
       <div className="container mt-8 flex flex-col content-around">
         {suggestedUsers.map((suggestedUser) => (
-          <Link className="hover:bg-pinkred hover:text-white" to={`/Profile/${suggestedUser.username}`}>
+          <Link className="hover:bg-pinkred hover:text-white" to={`/Profile/${suggestedUser.id}`}>
             <div className="cursor-pointer p-1 mx-2 my-4 flex flex-row">
               <img
                 src="https://via.placeholder.com/55"
