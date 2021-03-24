@@ -14,7 +14,7 @@ function Topic() {
       <header className="w-full shadow h-16 bg-white">
         <h1 className="font-bold p-5">Home</h1>
       </header>
-      <div className="bg-white w-full mx-auto p-2">
+      <div className="bg-white w-full mx-auto p-3">
         <div className="flex flex-row mt-6">
           <img
             src="https://via.placeholder.com/55"
@@ -38,7 +38,7 @@ function Topic() {
         <h1 className="font-bold p-5">Reference</h1>
       </header>
       {references.map((reference) => (
-        <div className="bg-white w-full shadow mx-auto m-2 p-2 hover:bg-pinkred hover:text-white cursor-pointer">
+        <div className="bg-white w-full shadow mx-auto m-2 p-3 hover:bg-pinkred hover:text-white cursor-pointer">
           <h3 className="font-semibold">{reference.title}</h3>
           <p>{reference.description}</p>
           <a href="#">{reference.url}</a>

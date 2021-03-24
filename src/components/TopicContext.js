@@ -16,12 +16,11 @@ export const TopicProvider = props => {
             mode: "no-cors",
             headers: {
                 Authorization:
-                    "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczpcL1wvbGVhcm5pbmcuYW5zaG9yLmNvXC9hcGlcL2xvZ2luIiwiaWF0IjoxNjExNzIzNDc2LCJleHAiOjE2MTE3MjcwNzYsIm5iZiI6MTYxMTcyMzQ3NiwianRpIjoienJ2eVNQbnFHelk1d3pCaiIsInN1YiI6MywicHJ2IjoiMjNiZDVjODk0OWY2MDBhZGIzOWU3MDFjNDAwODcyZGI3YTU5NzZmNyJ9.OEeslIbgAtp1WLRRMh3R9214daPYFfqYgx9k9XQ5Epw",
+                    "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczpcL1wvbGVhcm5pbmcuYW5zaG9yLmNvXC9hcGlcL2xvZ2luIiwiaWF0IjoxNjE2NTQ4MzY3LCJleHAiOjE2MTY1NTE5NjcsIm5iZiI6MTYxNjU0ODM2NywianRpIjoiQmdCZUc0RGE5d3h2OHF3SCIsInN1YiI6MywicHJ2IjoiMjNiZDVjODk0OWY2MDBhZGIzOWU3MDFjNDAwODcyZGI3YTU5NzZmNyJ9.I_zS61mnpSm7lmyhomrpOht1rpdvk39mChg3V8lpuUY",
             },
         };
-        const response = await axios.get("/feeds", requestOptions);
+        const response = await axios.get("/topic", requestOptions);
         const posts = await response.data.data.data;
-        //console.log(posts);
         setPosts(posts);
     };
 

@@ -17,12 +17,12 @@ function Sidebar() {
   };
 
   return (
-    <nav className="h-screen w-1/5 bg-white float-right">
-      <header className="w-full shadow h-16 bg-white">
-        <h1 className="font-bold p-5">Who to Follow</h1>
+    <nav className="h-screen w-side bg-white">
+      <header className="fixed border-b border-l w-side h-16 bg-white">
+        <h1 className="font-bold p-5">Suggested Users</h1>
       </header>
 
-      <div className="container mt-8 flex flex-col content-around">
+      <div className="w-full mt-16 flex flex-col content-around">
         {suggestedUsers.map((suggestedUser) => (
           <Link className="hover:bg-pinkred hover:text-white" to={`/Profile/${suggestedUser.id}`}>
             <div className="cursor-pointer p-1 mx-2 my-4 flex flex-row">

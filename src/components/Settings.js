@@ -5,10 +5,10 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 function Settings() {
   return (
     <Router>
-      <header className="w-full shadow h-16 bg-white">
+      <header className="h-16 ml-64 w-full border-r bg-white fixed">
         <h1 className="font-bold p-5">Settings</h1>
       </header>
-      <main className="h-screen bg-white flex flex-row">
+      <main className="ml-64 mt-16 h-max bg-white flex flex-row">
         <SettingsSidebar />
         <div className="w-full">
           <Switch>

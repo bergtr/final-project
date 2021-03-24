@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 
-function Contact() {
+function Reference() {
 
   useEffect(() => {
     window.location.href = "https://google.com/";
@@ -13,4 +13,4 @@ function Contact() {
   );
 }
 
-export default Contact;
+export default Reference;

@@ -3,11 +3,11 @@ import { Link } from "react-router-dom";
 
 function Navbar() {
   return (
-    <nav className="h-screen w-1/5 bg-white">
-      <header className="w-full shadow h-16 bg-white">
+    <nav className="h-screen fixed w-side bg-white">
+      <header className="h-16 bg-white">
         <h1 className="font-bold p-5">App Name</h1>
       </header>
-      <div className="container mt-10 flex flex-col content-around">
+      <div className="container mt-4 flex flex-col content-around w-full">
         <Link to="/">
           <div className="inline-block cursor-pointer m-2 p-2 text-left font-semibold align-middle focus:text-pinkred hover:text-pinkred">
             <svg
@@ -50,21 +50,6 @@ function Navbar() {
               <path d="M5 5a5 5 0 0 1 10 0v2A5 5 0 0 1 5 7V5zM0 16.68A19.9 19.9 0 0 1 10 14c3.64 0 7.06.97 10 2.68V20H0v-3.32z" />
             </svg>
             Profile
-          </div>
-        </Link>
-
-        <Link to="/Bookmarks">
-          <div className="inline-block cursor-pointer m-2 p-2 text-left font-semibold align-middle hover:text-pinkred">
-            <svg
-              className="inline-block pr-1 fill-current"
-              width="45px"
-              height="45px"
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 20 20"
-            >
-              <path d="M2 2c0-1.1.9-2 2-2h12a2 2 0 0 1 2 2v18l-8-4-8 4V2z" />
-            </svg>
-            Bookmarks
           </div>
         </Link>
 

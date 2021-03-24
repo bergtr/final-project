@@ -12,11 +12,12 @@ function Profile() {
   console.log(routeMatch);
 
   return (
-    <div>
-      <header className="w-full shadow h-16 bg-white">
+    <div className='w-main ml-nav border-l border-r bg-lightgray'>
+      <header className="h-16  w-full border-b border-r bg-white fixed">
         <h1 className="font-bold p-5">Profile</h1>
       </header>
-      <div className="bg-white shadow p-4 h-auto flex">
+
+      <div className=" pt-16 h-max bg-white shadow p-4 h-auto flex">
         <div className="container flex flex-row">
           <img
             src="https://via.placeholder.com/178"
@@ -37,7 +38,7 @@ function Profile() {
         </div>
       </div>
 
-      <main className="">
+      <main className="h-max">
         {posts.map((post) => (
           <div className="p-6 mb-2 bg-white">
             <div className="flex flex-row">

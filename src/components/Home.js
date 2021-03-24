@@ -11,11 +11,11 @@ function Home() {
   console.log(routeMatch);
 
   return (
-    <div>
-      <header className="w-full shadow h-16 bg-white">
-        <h1 className="font-bold p-5">Home</h1>
+    <div className='w-main ml-nav border-l border-r bg-lightgray'>
+      <header className="container h-16 border-r border-b bg-white fixed">
+        <h1 className="font-bold p-5 w-full">Home</h1>
       </header>
-      <main className="">
+      <main className="pt-16 h-max">
         {posts.map((post) => (
           <div className="p-6 mb-2 bg-white">
             <div className="flex flex-row">
