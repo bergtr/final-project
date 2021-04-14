@@ -6,12 +6,12 @@ import btn_comment from "../assets/btn_comment.svg";
 
 function Home() {
   const [posts, setPosts] = useContext(TopicContext);
-  
-  const {routeMatch} = useRouteMatch();
+
+  const { routeMatch } = useRouteMatch();
   console.log(routeMatch);
 
   return (
-    <div className='w-main ml-nav border-l border-r bg-lightgray'>
+    <div className="w-main ml-nav border-l border-r bg-lightgray">
       <header className="container h-16 border-r border-b bg-white fixed">
         <h1 className="font-bold p-5 w-full">Home</h1>
       </header>

@@ -11,6 +11,9 @@ import Topic from "./components/Topic";
 import { TopicProvider } from "./components/TopicContext";
 import { ReferenceProvider } from "./components/ReferenceContext";
 import CreatePost from "./components/CreatePost"
+import CreateRefs from "./components/CreateRefs"
+import CreateTopic from "./components/CreateTopic"
+
 import {
   BrowserRouter as Router,
   Switch,
@@ -30,6 +33,21 @@ const routes = [
     path: "/Explore",
     sidebar: () => <Sidebar />,
     main: () => <Explore />,
+  },
+  {
+    path: "/CreatePost",
+    sidebar: () => <Sidebar />,
+    main: () => <CreatePost />,
+  },
+  {
+    path: "/CreateRefs",
+    sidebar: () => <Sidebar />,
+    main: () => <CreateRefs />,
+  },
+  {
+    path: "/CreateTopic",
+    sidebar: () => <Sidebar />,
+    main: () => <CreateTopic />,
   },
   {
     path: `/Topic/:id`,

@@ -89,9 +89,11 @@ function Navbar() {
           </div>
         </Link>
 
-        <div className="cursor-pointer bg-pinkred m-2 text-center text-white font-semibold w-1/2 h-8 rounded-full align-middle">
-          Create Post
-        </div>
+        <Link to="/CreatePost">
+          <div className="cursor-pointer bg-pinkred m-2 text-center text-white font-semibold w-1/2 h-8 rounded-full align-middle">
+            Create Post
+          </div>
+        </Link>
       </div>
     </nav>
   );
