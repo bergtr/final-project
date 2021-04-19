@@ -17,7 +17,7 @@ function Home() {
       </header>
       <main className="pt-16 h-max">
         {posts.map((post) => (
-          <div className="p-6 mb-2 bg-white">
+          <div className="p-6 mb-2 bg-white hover:bg-pinkred hover:text-white">
             <div className="flex flex-row">
               <img
                 src="https://via.placeholder.com/55"

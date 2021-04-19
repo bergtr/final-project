@@ -1,5 +1,6 @@
-import React, { useState, useEffect, createContext } from "react";
+import React, { useState, useEffect, createContext, useContext } from "react";
 import axios from "axios";
+import { AuthContext } from "./Auth";
 export const TopicContext = createContext();
 
 export const TopicProvider = props => {
@@ -7,6 +8,7 @@ export const TopicProvider = props => {
         fetchPost(); 
     }, []);
 
+    const [authToken, setAuth] = useContext(AuthContext);
     const [posts, setPosts] = useState([]);
 
     //"https://learning.anshor.co/api/topic"
@@ -16,7 +18,7 @@ export const TopicProvider = props => {
             mode: "no-cors",
             headers: {
                 Authorization:
-                    "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczpcL1wvbGVhcm5pbmcuYW5zaG9yLmNvXC9hcGlcL2xvZ2luIiwiaWF0IjoxNjE4MzgzNjA0LCJleHAiOjE2MTgzODcyMDQsIm5iZiI6MTYxODM4MzYwNCwianRpIjoiTDJ5aXZrNVFvemxuNG5rWSIsInN1YiI6MTMsInBydiI6IjIzYmQ1Yzg5NDlmNjAwYWRiMzllNzAxYzQwMDg3MmRiN2E1OTc2ZjcifQ.q9RPz_OTmPHHo9EnlnwfKMmnqzEDhKU_JoyUli94mxk",
+                    `Bearer ${authToken}`,
             },
         };
         const response = await axios.get("/topic", requestOptions);

@@ -10,9 +10,10 @@ import Users from "./components/Users";
 import Topic from "./components/Topic";
 import { TopicProvider } from "./components/TopicContext";
 import { ReferenceProvider } from "./components/ReferenceContext";
-import CreatePost from "./components/CreatePost"
-import CreateRefs from "./components/CreateRefs"
-import CreateTopic from "./components/CreateTopic"
+import { AuthProvider } from "./components/Auth";
+import CreatePost from "./components/CreatePost";
+import CreateRefs from "./components/CreateRefs";
+import CreateTopic from "./components/CreateTopic";
 
 import {
   BrowserRouter as Router,
@@ -20,7 +21,6 @@ import {
   Route,
   useParams,
 } from "react-router-dom";
-
 
 const routes = [
   {
@@ -73,25 +73,24 @@ const routes = [
 ];
 
 function App() {
-  
   return (
-    //<UserProvider>
+    <AuthProvider>
       <TopicProvider>
         <ReferenceProvider>
           <Router>
             <div className="flex flex-row mx-4">
               <Navbar />
               {/* <main className="w-main border-l border-r bg-lightgray"> */}
-                <Switch>
-                  {routes.map((route, index) => (
-                    <Route
-                      key={index}
-                      path={route.path}
-                      exact={route.exact}
-                      children={<route.main />}
-                    />
-                  ))}
-                </Switch>
+              <Switch>
+                {routes.map((route, index) => (
+                  <Route
+                    key={index}
+                    path={route.path}
+                    exact={route.exact}
+                    children={<route.main />}
+                  />
+                ))}
+              </Switch>
               {/* </main> */}
               <Switch>
                 {routes.map((route, index) => (
@@ -107,7 +106,7 @@ function App() {
           </Router>
         </ReferenceProvider>
       </TopicProvider>
-    //</UserProvider>
+    </AuthProvider>
   );
 }
 

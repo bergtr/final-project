@@ -10,7 +10,7 @@ function Topic() {
   console.log(match);
 
   return (
-    <div className="container">
+    <div className="w-main ml-nav border-l border-r bg-lightgray">
       <header className="w-full shadow h-16 bg-white">
         <h1 className="font-bold p-5">Home</h1>
       </header>
