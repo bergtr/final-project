@@ -1,6 +1,9 @@
 import React from "react";
-
+import { useForm } from "react-hook-form";
 function CreateTopic() {
+
+  const { register, handleSubmit, formState: { errors } } = useForm();
+  const onSubmit = data => console.log(data);
 
   return (
     <div className="w-main ml-nav border-l border-r bg-lightgray">
@@ -8,7 +11,11 @@ function CreateTopic() {
         <h1 className="font-bold p-5 w-full">Create a Post</h1>
       </header>
       <main className="pt-16 h-max">
-        Topic OM
+        <form onSubmit={handleSubmit(onSubmit)}>
+          <input type="text" placeholder="Title" {...register("Title", { required: true })} />
+          <input type="text" placeholder="Description" {...register("Description", { required: true })} />
+          <input type="submit" />
+        </form>
       </main>
     </div>
   );

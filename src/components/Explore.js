@@ -33,8 +33,7 @@ function Explore() {
         </div>
 
         {posts.map((post) => (
-          <div className="p-6 mb-2 bg-white">
-
+          <div className="p-6 mb-2 bg-white" key={post.id}>
             <div>
               <div className="flex flex-row">
                 <img

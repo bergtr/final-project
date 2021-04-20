@@ -74,7 +74,7 @@ const routes = [
 
 function App() {
   return (
-    <AuthProvider>
+    //<AuthProvider>
       <TopicProvider>
         <ReferenceProvider>
           <Router>
@@ -106,7 +106,7 @@ function App() {
           </Router>
         </ReferenceProvider>
       </TopicProvider>
-    </AuthProvider>
+    //</AuthProvider>
   );
 }
 

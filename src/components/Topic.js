@@ -1,13 +1,25 @@
 import React, { useContext, useEffect, useState } from "react";
 import axios from "axios";
 import { ReferenceContext } from "./ReferenceContext";
+import { TopicContext } from "./TopicContext";
 import { useRouteMatch } from "react-router-dom";
 
 function Topic() {
+  useEffect(() => {
+  }, [])
+
   const [references, setReference] = useContext(ReferenceContext);
-  
+  const [topics, setTopics] = useContext(TopicContext);
+
   const match = useRouteMatch();
   console.log(match);
+  const topicReference = references.filter(reference => reference.topic_id == match.params.id)
+  const currentTopic = topics.filter(topic => topic.id == match.params.id);
+
+  const isReferenced = topicReference.length > 0;
+
+  console.log(isReferenced)
+  
 
   return (
     <div className="w-main ml-nav border-l border-r bg-lightgray">
@@ -27,23 +39,24 @@ function Topic() {
             Username <span className>@username</span>
           </p>
         </div>
-        <h1 className="font-semibold mt-2">Title</h1>
+        <h1 className="font-semibold mt-2">{currentTopic[0].title}</h1>
         <p className="text-lg">
-          Lorem ipsum dolor, sit amet consectetur adipisicing elit. Sit esse et
-          error non unde veniam alias, nesciunt laboriosam laudantium pariatur
-          fuga odio accusantium quo beatae debitis nostrum voluptatum a animi.
+         {currentTopic[0].description}
         </p>
       </div>
       <header className="w-full shadow h-16 bg-white my-2">
         <h1 className="font-bold p-5">Reference</h1>
       </header>
-      {references.map((reference) => (
-        <div className="bg-white w-full shadow mx-auto m-2 p-3 hover:bg-pinkred hover:text-white cursor-pointer">
+      {isReferenced 
+      ? topicReference.map((reference) => (
+        <div className="bg-white w-full shadow mx-auto m-2 p-3 hover:bg-pinkred hover:text-white cursor-pointer" key={reference.id}>
           <h3 className="font-semibold">{reference.title}</h3>
           <p>{reference.description}</p>
           <a href="#">{reference.url}</a>
         </div>
-      ))}
+      ))
+      : `Oops, this topic doesnt have references yet` 
+      }
     </div>
   );
 }

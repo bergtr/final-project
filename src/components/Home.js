@@ -9,6 +9,7 @@ function Home() {
 
   const { routeMatch } = useRouteMatch();
   console.log(routeMatch);
+  console.log(posts);
 
   return (
     <div className="w-main ml-nav border-l border-r bg-lightgray">
