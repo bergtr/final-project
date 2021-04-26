@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import { TopicContext } from "./TopicContext";
 import { Link, useRouteMatch } from "react-router-dom";
 import btn_like from "../assets/btn_like.svg";
@@ -7,9 +7,16 @@ import btn_comment from "../assets/btn_comment.svg";
 function Home() {
   const [posts, setPosts] = useContext(TopicContext);
 
-  const { routeMatch } = useRouteMatch();
-  console.log(routeMatch);
-  console.log(posts);
+  useEffect(() => {
+    console.log('mounted')
+    return () => {
+      console.log('dismount')
+    }
+  }, [])
+
+  //const { routeMatch } = useRouteMatch();
+  // console.log(routeMatch);
+  // console.log(posts);
 
   return (
     <div className="w-main ml-nav border-l border-r bg-lightgray">
