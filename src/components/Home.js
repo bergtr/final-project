@@ -1,11 +1,13 @@
 import React, { useContext, useEffect } from "react";
+import useFetch from "../hooks/useFetch";
 import { TopicContext } from "./TopicContext";
 import { Link, useRouteMatch } from "react-router-dom";
 import btn_like from "../assets/btn_like.svg";
 import btn_comment from "../assets/btn_comment.svg";
 
 function Home() {
-  const [posts, setPosts] = useContext(TopicContext);
+  //const [posts] = useContext(TopicContext);
+  const { data:posts } = useFetch(`/topic`)
 
   useEffect(() => {
     console.log('mounted')
@@ -25,7 +27,7 @@ function Home() {
       </header>
       <main className="pt-16 h-max">
         {posts.map((post) => (
-          <div className="p-6 mb-2 bg-white hover:bg-pinkred hover:text-white">
+          <div key={post.id} className="p-6 mb-2 bg-white hover:bg-pinkred hover:text-white">
             <div className="flex flex-row">
               <img
                 src="https://via.placeholder.com/55"

@@ -8,14 +8,13 @@ function Topic() {
   useEffect(() => {
   }, [])
 
-  const [references, setReference] = useContext(ReferenceContext);
-  const [topics, setTopics] = useContext(TopicContext);
+  const [references] = useContext(ReferenceContext);
+  const [topics] = useContext(TopicContext);
 
   const match = useRouteMatch();
   console.log(match);
   const topicReference = references.filter(reference => reference.topic_id == match.params.id)
   const currentTopic = topics.filter(topic => topic.id == match.params.id);
-
   const isReferenced = topicReference.length > 0;
 
   console.log(isReferenced)

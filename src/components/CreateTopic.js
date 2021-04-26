@@ -1,24 +1,22 @@
 import React, { useState } from "react";
 import { AuthContext } from "./Auth";
+import usePost from "../hooks/usePost";
 import { useForm } from "react-hook-form";
 import axios from 'axios';
 
 function CreateTopic() {
 
-
-  const [title, setTitle] = useState('');
-  const [description, setDescription] = useState('');
-
-
   const { register, handleSubmit, formState: { errors } } = useForm();
+
   const onSubmit = data => {
     console.log(data);
+    console.log(errors);
 
     const requestOptions = {
       mode: "no-cors",
       headers: {
         Authorization:
-          `Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczpcL1wvbGVhcm5pbmcuYW5zaG9yLmNvXC9hcGlcL2xvZ2luIiwiaWF0IjoxNjE5NDA4NjY1LCJleHAiOjE2MTk0MTIyNjUsIm5iZiI6MTYxOTQwODY2NSwianRpIjoiZWZFeHYyc042QWtvUHRSNyIsInN1YiI6MTMsInBydiI6IjIzYmQ1Yzg5NDlmNjAwYWRiMzllNzAxYzQwMDg3MmRiN2E1OTc2ZjcifQ.11MX6Bj-puCSdlnmFjAOMA4LA8u1UQtuXEgpq9k6T6M`,
+          `Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczpcL1wvbGVhcm5pbmcuYW5zaG9yLmNvXC9hcGlcL2xvZ2luIiwiaWF0IjoxNjE5NDI0NTAzLCJleHAiOjE2MTk0MjgxMDMsIm5iZiI6MTYxOTQyNDUwMywianRpIjoiSGdtQzJmV3g4T3I4TVNaSCIsInN1YiI6MTMsInBydiI6IjIzYmQ1Yzg5NDlmNjAwYWRiMzllNzAxYzQwMDg3MmRiN2E1OTc2ZjcifQ.IhS2IX_g8uqXKuke36gy2ylEE9bdbXFooeaGWxFonDo`,
       },
     };
 
@@ -33,6 +31,8 @@ function CreateTopic() {
       .catch(function (error) {
         console.log(error);
       });
+
+
   };
 
   return (
@@ -43,7 +43,7 @@ function CreateTopic() {
       <main className="pt-16 h-max">
         <form className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4" onSubmit={handleSubmit(onSubmit)}>
           <input type="text" className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:ring-pinkred focus:border-pinkred" placeholder="Title"  {...register("title", { required: true })} />
-          <textarea id="about" name="about" rows="3" class="shadow appearance-none border rounded w-full py-2 px-3 focus:outline-none focus:shadow-outline focus:ring-pinkred focus:border-pinkred mt-1 block w-full sm:text-sm border-gray-300 rounded-md" placeholder="Description" {...register("description", { required: true })} />
+          <textarea id="about" name="about" rows="3" className="shadow appearance-none border rounded w-full py-2 px-3 focus:outline-none focus:shadow-outline focus:ring-pinkred focus:border-pinkred mt-1 block w-full sm:text-sm border-gray-300 rounded-md" placeholder="Description" {...register("description", { required: true })} />
           <input className="cursor-pointer bg-pinkred m-2 text-center hover:bg-white hover:ring-2 hover:ring-pinkred text-white hover:text-pinkred focus:outline-none focus:ring-2 focus:ring-pinkred focus:ring-opacity-50  font-semibold w-1/2 h-8 rounded-full align-middle" type="submit" />
         </form>
       </main>
