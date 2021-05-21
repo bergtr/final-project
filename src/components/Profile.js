@@ -1,10 +1,15 @@
 import React, {useContext} from "react";
 import { useRouteMatch, Link } from "react-router-dom";
+import useFetch from "../hooks/useFetch";
 import { TopicContext } from "./TopicContext";
 import btn_like from "../assets/btn_like.svg";
 import btn_comment from "../assets/btn_comment.svg";
 
 function Profile() {
+
+  const { data:profile } = useFetch(`/profile`);
+  console.log(profile);
+
 
   const [posts, setPosts] = useContext(TopicContext);
   
