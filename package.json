@@ -1,7 +1,7 @@
 {
   "name": "final-project",
   "version": "0.1.0",
-  "proxy": "https://learning.anshor.co/api/",
+  "proxy": "https://aku.ndaktau.com/api",
   "homepage": "https://bergtr.github.io/final-project",
   "private": true,
   "dependencies": {

@@ -7,12 +7,8 @@ import btn_comment from "../assets/btn_comment.svg";
 
 function Profile() {
 
-  const { data:profile } = useFetch(`/profile`);
-  console.log(profile);
-
-
-  const [posts, setPosts] = useContext(TopicContext);
-  
+  const { data:posts } = useFetch(`/topic`);
+    
   const {routeMatch} = useRouteMatch();
   console.log(routeMatch);
 

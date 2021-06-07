@@ -20,6 +20,9 @@ import {
   Switch,
   Route,
   useParams,
+  Redirect, 
+  useHistory,
+  useLocation
 } from "react-router-dom";
 
 const routes = [

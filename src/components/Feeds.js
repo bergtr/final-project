@@ -1,35 +1,18 @@
-import React, { Suspense, useContext, useEffect } from "react";
-import Feeds from "./Feeds.js";
+import React, { useContext, useEffect } from "react";
 import useFetch from "../hooks/useFetch";
 import { TopicContext } from "./TopicContext";
 import { Link, useRouteMatch } from "react-router-dom";
 import btn_like from "../assets/btn_like.svg";
 import btn_comment from "../assets/btn_comment.svg";
 
-function Home() {
+function Feeds() {
   //const [posts] = useContext(TopicContext);
 
-  useEffect(() => {
-    console.log("mounted");
-    return () => {
-      console.log("dismount");
-    };
-  }, []);
+  const { data:posts, isLoading } = useFetch(`/topic`);
 
-  const [data, loading] = useFetch(`/topic`);
-
-  console.log(loading);
   return (
     <div className="w-main ml-nav border-l border-r bg-lightgray">
-      <header className="container h-16 border-r border-b bg-white fixed">
-        <h1 className="font-bold p-5 w-full">Home</h1>
-      </header>
-      <main className="pt-16 h-max">
-        {loading === "true" ? (
-          <div>Loading...</div>
-        ) : (
-          <div>
-            {data.data.data.data.map((post) => (
+            {posts.map((post) => (
               <div
                 key={post.id}
                 className="p-6 mb-2 bg-white hover:bg-pinkred hover:text-white"
@@ -72,11 +55,8 @@ function Home() {
                 </Link>
               </div>
             ))}
-          </div>
-        )}
-      </main>
     </div>
   );
 }
 
-export default Home;
+export default Feeds;
