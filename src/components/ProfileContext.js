@@ -1,10 +1,10 @@
 import React, { useState, useEffect, createContext, useContext } from "react";
 import axios from "axios";
-import { AuthContext } from "./Auth";
-export const TopicContext = createContext();
+//import { AuthContext } from "./Auth";
+export const ProfileContext = createContext();
 
-export const TopicProvider = (props) => {
-    const [posts, setPosts] = useState([]);
+export const ProfileProvider = (props) => {
+    const [profile, setProfile] = useState([]);
 
     //const [authToken, setAuth] = useContext(AuthContext);   
     //"https://learning.anshor.co/api/topic"
@@ -17,9 +17,10 @@ export const TopicProvider = (props) => {
                     `Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczpcL1wvYWt1Lm5kYWt0YXUuY29tXC9hcGlcL2xvZ2luIiwiaWF0IjoxNjI1NzEwNTYyLCJleHAiOjE2MjU3MTQxNjIsIm5iZiI6MTYyNTcxMDU2MiwianRpIjoiVkNoWWp0QWI3cGhTRUV0QSIsInN1YiI6MywicHJ2IjoiMjNiZDVjODk0OWY2MDBhZGIzOWU3MDFjNDAwODcyZGI3YTU5NzZmNyJ9.LC0_TQQPUQnGhI6fwdkr4La-zdILwcJuSiD22VjfpJg`,
             },
         };
-        const response = await axios.get("/topic", requestOptions);
-        const posts = await response.data.data.data;
-        setPosts(posts);
+        const response = await axios.get("/profile", requestOptions);
+
+        console.log(response.data);
+        setProfile(response.data);
     };
 
     useEffect(() => {
@@ -27,9 +28,8 @@ export const TopicProvider = (props) => {
     }, []);
 
     return (
-        <TopicContext.Provider value={[posts, setPosts]}>
+        <ProfileContext.Provider value={[profile, setProfile]}>
             {props.children}
-        </TopicContext.Provider>
+        </ProfileContext.Provider>
     )
 }
-

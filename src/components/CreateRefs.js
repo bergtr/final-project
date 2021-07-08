@@ -15,7 +15,7 @@ function CreateRefs() {
             mode: "no-cors",
             headers: {
               Authorization:
-                `Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczpcL1wvYWt1Lm5kYWt0YXUuY29tXC9hcGlcL2xvZ2luIiwiaWF0IjoxNjIzMDMxODc0LCJleHAiOjE2MjMwMzU0NzQsIm5iZiI6MTYyMzAzMTg3NCwianRpIjoiVGpvRE5HV2NlRmdLUFpVQyIsInN1YiI6MywicHJ2IjoiMjNiZDVjODk0OWY2MDBhZGIzOWU3MDFjNDAwODcyZGI3YTU5NzZmNyJ9.uAyvQUQnZIqqrtTZwUJK7i-sJXta5nUjKBDOuLB0EEM`,
+                `Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczpcL1wvYWt1Lm5kYWt0YXUuY29tXC9hcGlcL2xvZ2luIiwiaWF0IjoxNjI1NzA5MTgxLCJleHAiOjE2MjU3MTI3ODEsIm5iZiI6MTYyNTcwOTE4MSwianRpIjoiNnY1bWhZMWtRbVQ2eERBeCIsInN1YiI6MywicHJ2IjoiMjNiZDVjODk0OWY2MDBhZGIzOWU3MDFjNDAwODcyZGI3YTU5NzZmNyJ9.6P5I6bQTZ7nP6A8gSylhw91DMckN1HOlPewc5KG-SLE`,
             },
           };
       
@@ -24,6 +24,7 @@ function CreateRefs() {
             desc: data.description,
             url : data.url,
             is_public: '1',
+            
           }, requestOptions)
             .then(function (response) {
               console.log(response);

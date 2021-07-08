@@ -2,19 +2,20 @@ import React, { useContext, useEffect, useState } from "react";
 import axios from "axios";
 import { ReferenceContext } from "./ReferenceContext";
 import { TopicContext } from "./TopicContext";
-import { useRouteMatch } from "react-router-dom";
+import { Link, useRouteMatch } from "react-router-dom";
 
 function Topic() {
   useEffect(() => {
   }, [])
 
-  const [references] = useContext(ReferenceContext);
-  const [topics] = useContext(TopicContext);
+  const [references, setReference] = useContext(ReferenceContext);
+  const [topics, setTopics] = useContext(TopicContext);
 
   const match = useRouteMatch();
   console.log(match);
   const topicReference = references.filter(reference => reference.topic_id == match.params.id)
   const currentTopic = topics.filter(topic => topic.id == match.params.id);
+
   const isReferenced = topicReference.length > 0;
 
   console.log(isReferenced)
@@ -43,8 +44,13 @@ function Topic() {
          {currentTopic[0].description}
         </p>
       </div>
-      <header className="w-full shadow h-16 bg-white my-2">
+      <header className="w-full shadow h-16 bg-white my-2 flex justify-between">
         <h1 className="font-bold p-5">Reference</h1>
+        <Link to="/CreateRefs">
+          <div className="cursor-pointer bg-pinkred  m-4 mt-4 mr-16 w-auto h-8 rounded-full align-right">
+            <p className="p-1 px-1 text-white font-semibold">Add Reference</p>
+          </div>
+        </Link>
       </header>
       {isReferenced 
       ? topicReference.map((reference) => (
@@ -54,7 +60,7 @@ function Topic() {
           <a href="#">{reference.url}</a>
         </div>
       ))
-      : `Oops, this topic doesnt have references yet` 
+      : <p className="m-2">Oops, this topic doesnt have any reference yet</p> 
       }
     </div>
   );

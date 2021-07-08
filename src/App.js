@@ -95,7 +95,7 @@ function App() {
                 ))}
               </Switch>
               {/* </main> */}
-              {/* <Switch>
+              <Switch>
                 {routes.map((route, index) => (
                   <Route
                     key={index}
@@ -104,7 +104,7 @@ function App() {
                     children={<route.sidebar />}
                   />
                 ))}
-              </Switch> */}
+              </Switch>
             </div>
           </Router>
         </ReferenceProvider>

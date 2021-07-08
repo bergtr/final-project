@@ -4,7 +4,7 @@ import axios from "axios";
 const useFetch = (url) => {
     const [data, setData] = useState([]);
     const [loading, setLoading] = useState(true);
-
+    
     //const [authToken, setAuth] = useContext(AuthContext);   
     //"https://learning.anshor.co/api/topic"
 
@@ -37,16 +37,13 @@ const useFetch = (url) => {
             mode: "no-cors",
             headers: {
                 Authorization:
-                    `Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczpcL1wvYWt1Lm5kYWt0YXUuY29tXC9hcGlcL2xvZ2luIiwiaWF0IjoxNjI1NzA2OTc2LCJleHAiOjE2MjU3MTA1NzYsIm5iZiI6MTYyNTcwNjk3NiwianRpIjoiaHc0SllhQnRRSGhqMFVFayIsInN1YiI6MywicHJ2IjoiMjNiZDVjODk0OWY2MDBhZGIzOWU3MDFjNDAwODcyZGI3YTU5NzZmNyJ9.-BtRl6M4s_eFRxpv4V-S0XQsbF-BxDOLycXAwYlvChU`,
+                    `Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczpcL1wvYWt1Lm5kYWt0YXUuY29tXC9hcGlcL2xvZ2luIiwiaWF0IjoxNjI1NzEwNTYyLCJleHAiOjE2MjU3MTQxNjIsIm5iZiI6MTYyNTcxMDU2MiwianRpIjoiVkNoWWp0QWI3cGhTRUV0QSIsInN1YiI6MywicHJ2IjoiMjNiZDVjODk0OWY2MDBhZGIzOWU3MDFjNDAwODcyZGI3YTU5NzZmNyJ9.LC0_TQQPUQnGhI6fwdkr4La-zdILwcJuSiD22VjfpJg`,
             },
         };
-        console.log(loading);
 
         axios.get(url, requestOptions)
             .then((response) => {
                 setData(response);
-                setLoading(false);
-                console.log(loading);
             })
             .catch((error) => {
                 console.log(error);
