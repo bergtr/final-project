@@ -59,7 +59,7 @@ function Explore() {
           </form>
         </div>
 
-        {searchResult.map((post) => (
+        {/* {searchResult.map((post) => (
           <div className="p-6 mb-2 bg-white" key={post.id}>
             <div>
               <div className="flex flex-row">
@@ -101,7 +101,7 @@ function Explore() {
             </div>
 
           </div>
-        ))}
+        ))} */}
       </main>
     </div>
   );

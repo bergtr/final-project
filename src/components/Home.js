@@ -1,4 +1,4 @@
-import React, { Suspense, useContext, useEffect } from "react";
+import React, { Suspense, useContext, useEffect, useState } from "react";
 import Feeds from "./Feeds.js";
 import useFetch from "../hooks/useFetch";
 import { TopicContext } from "./TopicContext";
@@ -7,29 +7,19 @@ import btn_like from "../assets/btn_like.svg";
 import btn_comment from "../assets/btn_comment.svg";
 
 function Home() {
-  //const [posts] = useContext(TopicContext);
+  const [posts, setPosts] = useState([]);
+  const [feeds, setFeeds] = useState(null)
+  //const { data: posts, loading } = useFetch(`/topic`);
+  setFeeds(posts?.data?.data?.data ?? null)
 
-  useEffect(() => {
-    console.log("mounted");
-    return () => {
-      console.log("dismount");
-    };
-  }, []);
-
-  const [data, loading] = useFetch(`/topic`);
-
-  console.log(loading);
   return (
     <div className="w-main ml-nav border-l border-r bg-lightgray">
       <header className="container h-16 border-r border-b bg-white fixed">
         <h1 className="font-bold p-5 w-full">Home</h1>
       </header>
       <main className="pt-16 h-max">
-        {loading === "true" ? (
-          <div>Loading...</div>
-        ) : (
           <div>
-            {data.data.data.data.map((post) => (
+            {feeds.map((post) => (
               <div
                 key={post.id}
                 className="p-6 mb-2 bg-white hover:bg-pinkred hover:text-white"
@@ -73,7 +63,6 @@ function Home() {
               </div>
             ))}
           </div>
-        )}
       </main>
     </div>
   );
