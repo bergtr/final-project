@@ -14,7 +14,7 @@ export const TopicProvider = (props) => {
             mode: "no-cors",
             headers: {
                 Authorization:
-                    `Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczpcL1wvYWt1Lm5kYWt0YXUuY29tXC9hcGlcL2xvZ2luIiwiaWF0IjoxNjI1NzEwNTYyLCJleHAiOjE2MjU3MTQxNjIsIm5iZiI6MTYyNTcxMDU2MiwianRpIjoiVkNoWWp0QWI3cGhTRUV0QSIsInN1YiI6MywicHJ2IjoiMjNiZDVjODk0OWY2MDBhZGIzOWU3MDFjNDAwODcyZGI3YTU5NzZmNyJ9.LC0_TQQPUQnGhI6fwdkr4La-zdILwcJuSiD22VjfpJg`,
+                    `Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczpcL1wvYWt1Lm5kYWt0YXUuY29tXC9hcGlcL2xvZ2luIiwiaWF0IjoxNjI2NjgxNjk3LCJleHAiOjE2MjY2ODUyOTcsIm5iZiI6MTYyNjY4MTY5NywianRpIjoiVEdhQm56bEJ0TE5LY0U5TyIsInN1YiI6MywicHJ2IjoiMjNiZDVjODk0OWY2MDBhZGIzOWU3MDFjNDAwODcyZGI3YTU5NzZmNyJ9.U5l5Tu-xeefDawY3tELCIBGneqlqSHYl8VYc0J-D1mk`,
             },
         };
         const response = await axios.get("/topic", requestOptions);

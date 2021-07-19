@@ -23,7 +23,7 @@ function Explore() {
           mode: "no-cors",
           headers: {
             Authorization:
-              `Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczpcL1wvbGVhcm5pbmcuYW5zaG9yLmNvXC9hcGlcL2xvZ2luIiwiaWF0IjoxNjE5NDA4NjY1LCJleHAiOjE2MTk0MTIyNjUsIm5iZiI6MTYxOTQwODY2NSwianRpIjoiZWZFeHYyc042QWtvUHRSNyIsInN1YiI6MTMsInBydiI6IjIzYmQ1Yzg5NDlmNjAwYWRiMzllNzAxYzQwMDg3MmRiN2E1OTc2ZjcifQ.11MX6Bj-puCSdlnmFjAOMA4LA8u1UQtuXEgpq9k6T6M`,
+              `Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczpcL1wvYWt1Lm5kYWt0YXUuY29tXC9hcGlcL2xvZ2luIiwiaWF0IjoxNjI2NjgxNjk3LCJleHAiOjE2MjY2ODUyOTcsIm5iZiI6MTYyNjY4MTY5NywianRpIjoiVEdhQm56bEJ0TE5LY0U5TyIsInN1YiI6MywicHJ2IjoiMjNiZDVjODk0OWY2MDBhZGIzOWU3MDFjNDAwODcyZGI3YTU5NzZmNyJ9.U5l5Tu-xeefDawY3tELCIBGneqlqSHYl8VYc0J-D1mk`,
           },
         };
     
@@ -59,9 +59,9 @@ function Explore() {
           </form>
         </div>
 
-        {/* {searchResult.map((post) => (
-          <div className="p-6 mb-2 bg-white" key={post.id}>
-            <div>
+        {posts.map((post) => (
+          <div className="p-6 mb-2 bg-white hover:bg-pinkred hover:text-white" key={post.id}>
+            <div className=''>
               <div className="flex flex-row">
                 <img
                   src="https://via.placeholder.com/55"
@@ -101,7 +101,7 @@ function Explore() {
             </div>
 
           </div>
-        ))} */}
+        ))}
       </main>
     </div>
   );

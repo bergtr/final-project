@@ -1,21 +1,24 @@
 import React, { useContext, useEffect } from "react";
-import { TopicContext } from "./TopicContext";
-import { ProfileContext } from "./ProfileContext";
-import { Link, useRouteMatch } from "react-router-dom";
 import useFetch from "../hooks/useFetch";
+import { TopicContext } from "./TopicContext";
+//import { ProfileContext } from "./ProfileContext";
+import { Link } from "react-router-dom";
 import btn_like from "../assets/btn_like.svg";
 import btn_comment from "../assets/btn_comment.svg";
 
 function Home() {
-	const [posts, setPosts] = useContext(TopicContext);
-  const [{ data: profile }] = useFetch(`/profile`);
+  //const [{ data: profile }] = useFetch(`/profile`);
+	const [posts] = useContext(TopicContext);
+  
 
-	useEffect(() => {
-		console.log("mounted");
-		return () => {
-			console.log("dismount");
-		};
-	}, []);
+  //console.log(profile);
+
+	// useEffect(() => {
+	// 	console.log("mounted");
+	// 	return () => {
+	// 		console.log("dismount");
+	// 	};
+	// }, []);
 
 	//const { routeMatch } = useRouteMatch();
 	// console.log(routeMatch);
@@ -27,7 +30,7 @@ function Home() {
 			</header>
 			<main className='pt-16 h-max'>
 				{posts.map((post) => (
-					<div className='p-6 mb-2 bg-white hover:bg-pinkred hover:text-white'>
+					<div key={post.id} className='p-6 mb-2 bg-white hover:bg-pinkred hover:text-white'>
 						<div className='flex flex-row'>
 							<img
 								src='https://via.placeholder.com/55'
@@ -37,10 +40,10 @@ function Home() {
 								className='rounded-full'
 							/>
 							<p className='p-3'>
-								Username <span className>@username</span>
+								Username <span className>username</span>
 							</p>
 						</div>
-						<Link to={`/Topic/${post.id}`}>
+						<Link key={post.id} to={`/Topic/${post.id}`}>
 							<article className='flex flex-col m-1'>
 								<h2 className='font-semibold m-2'>{post.title}</h2>
 								<div>

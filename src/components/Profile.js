@@ -1,5 +1,7 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useState } from "react";
+import axios from "axios";
 import { TopicContext } from "./TopicContext";
+import { ProfileContext } from "./ProfileContext";
 import { Link } from "react-router-dom";
 import useFetch from "../hooks/useFetch";
 import btn_like from "../assets/btn_like.svg";
@@ -7,8 +9,30 @@ import btn_comment from "../assets/btn_comment.svg";
 
 function Profile() {
 
-  const [posts, setPosts] = useContext(TopicContext);
-  const [{ data: profile }] = useFetch(`/profile`);
+  const [profile, setProfile] = useState([]);
+
+    //const [authToken, setAuth] = useContext(AuthContext);   
+    //"https://learning.anshor.co/api/topic"
+
+    const fetchPost = async () => {
+        const requestOptions = {
+            mode: "no-cors",
+            headers: {
+                Authorization:
+                    `Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczpcL1wvYWt1Lm5kYWt0YXUuY29tXC9hcGlcL2xvZ2luIiwiaWF0IjoxNjI2NjgxNjk3LCJleHAiOjE2MjY2ODUyOTcsIm5iZiI6MTYyNjY4MTY5NywianRpIjoiVEdhQm56bEJ0TE5LY0U5TyIsInN1YiI6MywicHJ2IjoiMjNiZDVjODk0OWY2MDBhZGIzOWU3MDFjNDAwODcyZGI3YTU5NzZmNyJ9.U5l5Tu-xeefDawY3tELCIBGneqlqSHYl8VYc0J-D1mk`,
+            },
+        };
+        const response = await axios.get("/profile", requestOptions);
+
+        console.log(response.data.data);
+        setProfile(response.data.data);
+    };
+
+    useEffect(() => {
+        fetchPost(); 
+    }, []);
+
+  const [posts] = useContext(TopicContext);
 
   console.log(profile);
 
@@ -31,7 +55,7 @@ function Profile() {
           <div className="my-8 p-3">
             <div>
               <p className="font-semibold">
-                {profile.data.display_name}
+                {profile.display_name}
               </p>
               <p>3 Posts | 123 Followers | 321 Following</p>
             </div>
