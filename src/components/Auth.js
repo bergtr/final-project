@@ -23,7 +23,7 @@ export const AuthProvider = (props) => {
             console.log(authToken);
             setAuth(authToken);
         } catch (error) {
-            throw new error ('something wrong with your login')
+            throw new error ('something wrong with your login');
         }
     };
 

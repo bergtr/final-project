@@ -34,6 +34,7 @@ function CreateRefs() {
       .then(function (response) {
         console.log(response);
         alert('success dude!');
+        history.push('/');
       })
       .catch(function (error) {
         console.log(error);

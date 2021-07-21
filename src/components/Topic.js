@@ -47,7 +47,7 @@ function Topic() {
   return (
     <div className="w-main h-full ml-nav border-l border-r bg-lightgray">
       <header className="w-full shadow h-16 bg-white">
-        <h1 className="font-bold p-5">Home</h1>
+        <h1 className="font-bold p-5">Topic</h1>
       </header>
       <div className="bg-white w-full mx-auto p-3">
         <div className="flex flex-row mt-6">
