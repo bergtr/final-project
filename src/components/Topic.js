@@ -6,19 +6,38 @@ import { Link, useRouteMatch } from "react-router-dom";
 
 function Topic() {
   useEffect(() => {
+    getReference();
   }, [])
 
-  const [references, setReference] = useContext(ReferenceContext);
+  const [references, setReference] = useState([]);
   const [topics, setTopics] = useContext(TopicContext);
+
+  const getReference = async () => {
+
+    try {
+      const requestOptions = {
+        mode: "no-cors",
+        headers: {
+          Authorization:
+            `Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczpcL1wvYWt1Lm5kYWt0YXUuY29tXC9hcGlcL2xvZ2luIiwiaWF0IjoxNjI2ODI3NzIzLCJleHAiOjE2MjY4MzEzMjMsIm5iZiI6MTYyNjgyNzcyMywianRpIjoiUnBiUFF5TVY4U3d1NWhTdyIsInN1YiI6MywicHJ2IjoiMjNiZDVjODk0OWY2MDBhZGIzOWU3MDFjNDAwODcyZGI3YTU5NzZmNyJ9.jyuAIc13XDBbiHvHFJc-TwqRJvwfAlnUwGUqD9G9ufs`,
+        },
+      };
+      const response = await axios.get(`/note`, requestOptions);
+      const references = await response.data.data.data;
+      setReference(references);
+    } catch (error) {
+      console.log(error)
+    }
+  };
 
   const match = useRouteMatch();
   console.log(match);
   const topicReference = references.filter(reference => reference.topic_id == match.params.id)
   const currentTopic = topics.filter(topic => topic.id == match.params.id);
-
   const isReferenced = topicReference.length > 0;
 
-  console.log(isReferenced)
+  console.log(isReferenced);
+  console.log(topicReference);
   
 
   return (

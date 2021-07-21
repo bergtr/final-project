@@ -11,26 +11,32 @@ function Profile() {
 
   const [profile, setProfile] = useState([]);
 
-    //const [authToken, setAuth] = useContext(AuthContext);   
-    //"https://learning.anshor.co/api/topic"
+  //const [authToken, setAuth] = useContext(AuthContext);   
+  //"https://learning.anshor.co/api/topic"
 
-    const fetchPost = async () => {
-        const requestOptions = {
-            mode: "no-cors",
-            headers: {
-                Authorization:
-                    `Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczpcL1wvYWt1Lm5kYWt0YXUuY29tXC9hcGlcL2xvZ2luIiwiaWF0IjoxNjI2NjgxNjk3LCJleHAiOjE2MjY2ODUyOTcsIm5iZiI6MTYyNjY4MTY5NywianRpIjoiVEdhQm56bEJ0TE5LY0U5TyIsInN1YiI6MywicHJ2IjoiMjNiZDVjODk0OWY2MDBhZGIzOWU3MDFjNDAwODcyZGI3YTU5NzZmNyJ9.U5l5Tu-xeefDawY3tELCIBGneqlqSHYl8VYc0J-D1mk`,
-            },
-        };
-        const response = await axios.get("/profile", requestOptions);
+  const fetchPost = async () => {
 
-        console.log(response.data.data);
-        setProfile(response.data.data);
-    };
+    try {
+      const requestOptions = {
+        mode: "no-cors",
+        headers: {
+          Authorization:
+            `Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczpcL1wvYWt1Lm5kYWt0YXUuY29tXC9hcGlcL2xvZ2luIiwiaWF0IjoxNjI2ODI3NzIzLCJleHAiOjE2MjY4MzEzMjMsIm5iZiI6MTYyNjgyNzcyMywianRpIjoiUnBiUFF5TVY4U3d1NWhTdyIsInN1YiI6MywicHJ2IjoiMjNiZDVjODk0OWY2MDBhZGIzOWU3MDFjNDAwODcyZGI3YTU5NzZmNyJ9.jyuAIc13XDBbiHvHFJc-TwqRJvwfAlnUwGUqD9G9ufs`,
+        },
+      };
+      const response = await axios.get("/profile", requestOptions);
 
-    useEffect(() => {
-        fetchPost(); 
-    }, []);
+      console.log(response.data.data);
+      setProfile(response.data.data);
+    } catch (error) {
+      console.log(error)
+    }
+
+  };
+
+  useEffect(() => {
+    fetchPost();
+  }, []);
 
   const [posts] = useContext(TopicContext);
 
@@ -45,13 +51,6 @@ function Profile() {
 
       <div className=" pt-16 h-max bg-white shadow p-4 h-auto flex">
         <div className="container flex flex-row">
-          <img
-            src="https://via.placeholder.com/178"
-            alt="profile"
-            height="178px"
-            width="178px"
-            className="rounded-full"
-          />
           <div className="my-8 p-3">
             <div>
               <p className="font-semibold">

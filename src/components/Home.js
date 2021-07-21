@@ -1,28 +1,48 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import useFetch from "../hooks/useFetch";
 import { TopicContext } from "./TopicContext";
+import axios from "axios";
 //import { ProfileContext } from "./ProfileContext";
 import { Link } from "react-router-dom";
 import btn_like from "../assets/btn_like.svg";
 import btn_comment from "../assets/btn_comment.svg";
 
 function Home() {
-  //const [{ data: profile }] = useFetch(`/profile`);
-	const [posts] = useContext(TopicContext);
+
+  const [posts, setPosts] = useState([]);
+
+//const [authToken, setAuth] = useContext(AuthContext);   
+//"https://learning.anshor.co/api/topic"
+
+const fetchPost = async () => {
+
+  try {
+    const requestOptions = {
+        mode: "no-cors",
+        headers: {
+            Authorization:
+                `Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczpcL1wvYWt1Lm5kYWt0YXUuY29tXC9hcGlcL2xvZ2luIiwiaWF0IjoxNjI2ODI3NzIzLCJleHAiOjE2MjY4MzEzMjMsIm5iZiI6MTYyNjgyNzcyMywianRpIjoiUnBiUFF5TVY4U3d1NWhTdyIsInN1YiI6MywicHJ2IjoiMjNiZDVjODk0OWY2MDBhZGIzOWU3MDFjNDAwODcyZGI3YTU5NzZmNyJ9.jyuAIc13XDBbiHvHFJc-TwqRJvwfAlnUwGUqD9G9ufs`,
+        },
+    };
+    const response = await axios.get("/topic", requestOptions);
+    const posts = await response.data.data.data;
+    setPosts(posts);
+    console.log(posts)
+  } catch (error) {
+    console.log(error);
+  }
+
+};
+
+
+  useEffect(() => {
+		fetchPost();
+	}, []);
+
+	//const [posts] = useContext(TopicContext);
+
+
   
-
-  //console.log(profile);
-
-	// useEffect(() => {
-	// 	console.log("mounted");
-	// 	return () => {
-	// 		console.log("dismount");
-	// 	};
-	// }, []);
-
-	//const { routeMatch } = useRouteMatch();
-	// console.log(routeMatch);
-
 	return (
 		<div className='w-main ml-nav border-l border-r bg-lightgray'>
 			<header className='container h-16 border-r border-b bg-white fixed'>

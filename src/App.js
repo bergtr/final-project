@@ -94,17 +94,6 @@ function App() {
                   />
                 ))}
               </Switch>
-              {/* </main> */}
-              <Switch>
-                {routes.map((route, index) => (
-                  <Route
-                    key={index}
-                    path={route.path}
-                    exact={route.exact}
-                    children={<route.sidebar />}
-                  />
-                ))}
-              </Switch>
             </div>
           </Router>
         </ReferenceProvider>
