@@ -5,7 +5,6 @@ import Explore from "./components/Explore";
 import Profile from "./components/Profile";
 import Bookmarks from "./components/Bookmarks";
 import Settings from "./components/Settings";
-import Sidebar from "./components/Sidebar";
 import Users from "./components/Users";
 import Topic from "./components/Topic";
 import Landing from "./components/Landing";
@@ -30,50 +29,55 @@ const routes = [
 	{
 		path: "/",
 		exact: true,
-		sidebar: () => <Sidebar />,
+		sidebar: () => <Navbar />,
 		main: () => <Home />,
 	},
 	{
 		path: "/Explore",
-		sidebar: () => <Sidebar />,
+		sidebar: () => <Navbar />,
 		main: () => <Explore />,
 	},
 	{
 		path: "/CreatePost",
-		sidebar: () => <Sidebar />,
+		sidebar: () => <Navbar />,
 		main: () => <CreatePost />,
 	},
 	{
 		path: "/CreateRefs",
-		sidebar: () => <Sidebar />,
+		sidebar: () => <Navbar />,
 		main: () => <CreateRefs />,
 	},
 	{
 		path: "/CreateTopic",
-		sidebar: () => <Sidebar />,
+		sidebar: () => <Navbar />,
 		main: () => <CreateTopic />,
 	},
 	{
 		path: `/Topic/:id`,
-		sidebar: () => <Sidebar />,
+		sidebar: () => <Navbar />,
 		main: () => <Topic />,
 	},
 	{
 		path: "/Profile",
 		exact: true,
-		sidebar: () => <Sidebar />,
+		sidebar: () => <Navbar />,
 		main: () => <Profile />,
 	},
 	{
 		path: "/Profile/:id",
-		sidebar: () => <Sidebar />,
+		sidebar: () => <Navbar />,
 		main: () => <Users />,
 	},
 	{
 		path: "/Settings",
-		sidebar: () => <Sidebar />,
+		sidebar: () => <Navbar />,
 		main: () => <Settings />,
 	},
+  {
+    path: "/Landing",
+    sidebar: () => '',
+    main: () => <Landing />
+  }
 ];
 
 function App() {
@@ -81,14 +85,23 @@ function App() {
 		<AuthProvider>
 			<TopicProvider>
 				{/* <ReferenceProvider> */}
-				<Router>
 					<div className='flex flex-row mx-4'>
-						<Navbar />
-						{/* <main className="w-main border-l border-r bg-lightgray"> */}
+
 						<Switch>
-							<Route path='/landing'>
-								<Landing />
-							</Route>
+							{routes.map((route, index) => (
+								<Route
+									key={index}
+									path={route.path}
+									exact={route.exact}
+									children={<route.sidebar />}
+								/>
+							))}
+						</Switch>
+
+						{/* <Navbar /> */}
+						{/* <main className="w-main border-l border-r bg-lightgray"> */}
+
+						<Switch>
 							{routes.map((route, index) => (
 								<Route
 									key={index}
@@ -99,7 +112,6 @@ function App() {
 							))}
 						</Switch>
 					</div>
-				</Router>
 				{/* </ReferenceProvider> */}
 			</TopicProvider>
 		</AuthProvider>

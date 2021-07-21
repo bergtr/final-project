@@ -112,7 +112,7 @@ function Explore() {
                     className='rounded-full'
                   />
                   <p className='p-3'>
-                    Username <span className>username</span>
+                    Username <span>username</span>
                   </p>
                 </div>
                 <Link key={post.id} to={`/Topic/${post.id}`}>

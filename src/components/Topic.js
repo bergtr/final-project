@@ -4,18 +4,19 @@ import { ReferenceContext } from "./ReferenceContext";
 import { TopicContext } from "./TopicContext";
 import { Link, useRouteMatch } from "react-router-dom";
 import { AuthContext } from "./Auth";
+import Reference from "./Reference";
 
 function Topic() {
-  useEffect(() => {
-    getReference();
-  },[])
 
   const [references, setReference] = useState([]);
-  const [relevantTopic, setRelevantTopic] = useState([]);
-  const [topics, setTopics] = useContext(TopicContext);
+  //const [posts, setPosts] = useState([]);
   const authToken = useContext(AuthContext);
+  const [posts] = useContext(TopicContext);
 
-  console.log(authToken);
+  useEffect(() => {
+    getReference();
+  }, [])
+
   const getReference = async () => {
 
     try {
@@ -37,12 +38,11 @@ function Topic() {
   const match = useRouteMatch();
   console.log(match);
   const topicReference = references.filter(reference => reference.topic_id == match.params.id)
-  const currentTopic = topics.filter(topic => topic.id == match.params.id);
+  const currentTopic = posts.filter(post => post.id == match.params.id);
   const isReferenced = topicReference.length > 0;
-
-  console.log(isReferenced);
-  console.log(topicReference);
-  
+  const isLoaded = currentTopic.length > 0;
+  console.log(currentTopic);
+  console.log(posts[0]);
 
   return (
     <div className="w-main h-full ml-nav border-l border-r bg-lightgray">
@@ -62,10 +62,15 @@ function Topic() {
             Username <span className>@username</span>
           </p>
         </div>
-        <h1 className="font-semibold mt-2">{currentTopic[0].title}</h1>
-        <p className="text-lg">
-         {currentTopic[0].description}
-        </p>
+        {isLoaded ?
+          <div>
+          <h1 className="font-semibold mt-2">{currentTopic[0].title}</h1>
+          <p className="text-lg">
+            {currentTopic[0].description}
+          </p>
+        </div>
+        :<h1>Loading</h1>
+        }
       </div>
       <header className="w-full shadow h-16 bg-white my-2 flex justify-between">
         <h1 className="font-bold p-5">Reference</h1>
@@ -75,15 +80,15 @@ function Topic() {
           </div>
         </Link>
       </header>
-      {isReferenced 
-      ? topicReference.map((reference) => (
-        <div className="bg-white w-full shadow mx-auto m-2 p-3 hover:bg-pinkred hover:text-white cursor-pointer" key={reference.id}>
-          <h3 className="font-semibold">{reference.title}</h3>
-          <p>{reference.description}</p>
-          <a href="#">{reference.url}</a>
-        </div>
-      ))
-      : <p className="m-2">Oops, this topic doesnt have any reference yet</p> 
+      {isReferenced
+        ? topicReference.map((reference) => (
+          <div className="bg-white w-full shadow mx-auto m-2 p-3 hover:bg-pinkred hover:text-white cursor-pointer" key={reference.id}>
+            <h3 className="font-semibold">{reference.title}</h3>
+            <p>{reference.description}</p>
+            <a href="#">{reference.url}</a>
+          </div>
+        ))
+        : <p className="m-2">Oops, this topic doesnt have any reference yet</p>
       }
     </div>
   );

@@ -1,12 +1,21 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
+import { BrowserRouter } from 'react-router-dom';
 import { AuthProvider } from './components/Auth';
+import { TopicProvider } from './components/TopicContext';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
 ReactDOM.render(
-    <App />
+  <AuthProvider>
+    <TopicProvider>
+      <BrowserRouter>
+        <App />
+      </BrowserRouter>
+    </TopicProvider>
+  </AuthProvider>
+
   ,
   document.getElementById('root')
 );

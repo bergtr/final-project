@@ -21,7 +21,6 @@ export const UserProvider = props => {
     const users = await data.json();
     console.log(users);
     setUsers(users);
-
   };
     return (
         <UserContext.Provider value={[users, setUsers]}>

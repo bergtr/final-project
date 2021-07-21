@@ -9,36 +9,37 @@ import btn_like from "../assets/btn_like.svg";
 import btn_comment from "../assets/btn_comment.svg";
 
 function Home() {
-	const [posts, setPosts] = useState([]);
+	// const [posts, setPosts] = useState([]);
 
 	const  authToken  = useContext(AuthContext);
 	console.log(authToken);
 
 	//"https://learning.anshor.co/api/topic"
 
-	const fetchPost = async () => {
-    const requestOptions = {
-				mode: "no-cors",
-				headers: {
-					Authorization: `Bearer ${authToken[0]}`,
-				},
-			};
 
-		try {
-			const response = await axios.get("/topic", requestOptions);
-			const posts = await response.data.data.data;
-			setPosts(posts);
-			console.log(posts);
-		} catch (error) {
-			console.log(error);
-		}
-	};
 
-	useEffect(() => {
-		fetchPost();
-	}, []);
+	// useEffect(() => {
+  //   const fetchPost = async () => {
+  //   const requestOptions = {
+	// 			mode: "no-cors",
+	// 			headers: {
+	// 				Authorization: `Bearer ${authToken[0]}`,
+	// 			},
+	// 		};
 
-	//const [posts] = useContext(TopicContext);
+	// 	try {
+	// 		const response = await axios.get("/topic", requestOptions);
+	// 		const posts = await response.data.data.data;
+	// 		setPosts(posts);
+	// 		console.log(posts);
+	// 	} catch (error) {
+	// 		console.log(error);
+	// 	}
+	// };
+	// 	fetchPost();
+	// }, [authToken]);
+
+	const [posts] = useContext(TopicContext);
 
 	return (
 		<div className='w-main ml-nav border-l border-r bg-lightgray'>
