@@ -9,9 +9,10 @@ import btn_comment from "../assets/btn_comment.svg";
 
 function Explore() {
 
-  //const [authToken, setAuth] = useContext(AuthContext);
 
-  const [posts, setPosts] = useContext(TopicContext);
+  const [posts] = useContext(TopicContext);
+  const authToken = useContext(AuthContext);
+  
   const [searchResult, setSearchResult] = useState([]);
   const isSearching = searchResult.length > 0;
   console.log(searchResult);
@@ -25,7 +26,7 @@ function Explore() {
       mode: "no-cors",
       headers: {
         Authorization:
-          `Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczpcL1wvYWt1Lm5kYWt0YXUuY29tXC9hcGlcL2xvZ2luIiwiaWF0IjoxNjI2ODI3NzIzLCJleHAiOjE2MjY4MzEzMjMsIm5iZiI6MTYyNjgyNzcyMywianRpIjoiUnBiUFF5TVY4U3d1NWhTdyIsInN1YiI6MywicHJ2IjoiMjNiZDVjODk0OWY2MDBhZGIzOWU3MDFjNDAwODcyZGI3YTU5NzZmNyJ9.jyuAIc13XDBbiHvHFJc-TwqRJvwfAlnUwGUqD9G9ufs`,
+          `Bearer ${authToken[0]}`,
       },
     };
 
@@ -68,7 +69,7 @@ function Explore() {
                 <div className=''>
                   <div className="flex flex-row">
                     <p className="p-3">
-                      Username <span className>@username</span>
+                      Username <span>@username</span>
                     </p>
                   </div>
                   <Link to={`/Topic/${searchResults.id}`}>

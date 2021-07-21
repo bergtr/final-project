@@ -3,15 +3,19 @@ import axios from "axios";
 import { ReferenceContext } from "./ReferenceContext";
 import { TopicContext } from "./TopicContext";
 import { Link, useRouteMatch } from "react-router-dom";
+import { AuthContext } from "./Auth";
 
 function Topic() {
   useEffect(() => {
     getReference();
-  }, [])
+  },[])
 
   const [references, setReference] = useState([]);
+  const [relevantTopic, setRelevantTopic] = useState([]);
   const [topics, setTopics] = useContext(TopicContext);
+  const authToken = useContext(AuthContext);
 
+  console.log(authToken);
   const getReference = async () => {
 
     try {
@@ -19,7 +23,7 @@ function Topic() {
         mode: "no-cors",
         headers: {
           Authorization:
-            `Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczpcL1wvYWt1Lm5kYWt0YXUuY29tXC9hcGlcL2xvZ2luIiwiaWF0IjoxNjI2ODI3NzIzLCJleHAiOjE2MjY4MzEzMjMsIm5iZiI6MTYyNjgyNzcyMywianRpIjoiUnBiUFF5TVY4U3d1NWhTdyIsInN1YiI6MywicHJ2IjoiMjNiZDVjODk0OWY2MDBhZGIzOWU3MDFjNDAwODcyZGI3YTU5NzZmNyJ9.jyuAIc13XDBbiHvHFJc-TwqRJvwfAlnUwGUqD9G9ufs`,
+            `Bearer ${authToken[0]}`,
         },
       };
       const response = await axios.get(`/note`, requestOptions);
@@ -41,7 +45,7 @@ function Topic() {
   
 
   return (
-    <div className="w-main ml-nav border-l border-r bg-lightgray">
+    <div className="w-main h-full ml-nav border-l border-r bg-lightgray">
       <header className="w-full shadow h-16 bg-white">
         <h1 className="font-bold p-5">Home</h1>
       </header>

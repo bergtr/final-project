@@ -3,7 +3,7 @@ import React from "react";
 function Landing(){
 
     return (
-        <h1>Landing OM</h1>
+        <div className='w-main ml-nav border-l border-r bg-lightgray'>Landingcong</div>
     )
 }
 

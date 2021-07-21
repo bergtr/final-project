@@ -17,7 +17,6 @@ export const UserProvider = props => {
   const [users, setUsers] = useState({});
 
   const fetchUser = async () => {
-    
     const data = await fetch(`https://jsonplaceholder.typicode.com/users/${match.id}`);
     const users = await data.json();
     console.log(users);

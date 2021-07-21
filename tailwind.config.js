@@ -4,9 +4,10 @@ module.exports = {
   theme: {
     extend: {
       spacing: {
-        'nav': '17%',
-        'main': '80%',
-        'side': '15%'
+        'nav'   : '17%',
+        'main'  : '80%',
+        'side'  : '15%',
+        'full'  : '100%'
       },
       colors: {
         pinkred: {
