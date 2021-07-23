@@ -4,15 +4,18 @@ import './index.css';
 import { BrowserRouter } from 'react-router-dom';
 import { AuthProvider } from './components/Auth';
 import { TopicProvider } from './components/TopicContext';
+import { UserProvider } from './components/UserContext';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
 ReactDOM.render(
   <AuthProvider>
     <TopicProvider>
-      <BrowserRouter>
-        <App />
-      </BrowserRouter>
+      <UserProvider>
+        <BrowserRouter>
+          <App />
+        </BrowserRouter>
+      </UserProvider>
     </TopicProvider>
   </AuthProvider>
 

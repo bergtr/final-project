@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useContext } from "react";
 import axios from "axios";
-import { AuthContext } from "./Auth";
+import { useAuth } from "./Auth";
 import { TopicContext } from "./TopicContext";
 import { Link } from "react-router-dom";
 import { useForm } from "react-hook-form";
@@ -11,7 +11,7 @@ function Explore() {
 
 
   const [posts] = useContext(TopicContext);
-  const authToken = useContext(AuthContext);
+  const auth = useAuth();
   
   const [searchResult, setSearchResult] = useState([]);
   const isSearching = searchResult.length > 0;
@@ -26,7 +26,7 @@ function Explore() {
       mode: "no-cors",
       headers: {
         Authorization:
-          `Bearer ${authToken[0]}`,
+          `Bearer ${auth.authToken}`,
       },
     };
 
@@ -56,7 +56,7 @@ function Explore() {
               placeholder="search something here"
               {...register("search")}
             />
-            <button type="submit" className="inline-block bg-red-400 hover:text-pinkred rounded text-white p-2 pl-4 pr-4 my-8 ml-2">
+            <button type="submit" className="inline-block bg-pinkred text-white font-bold text-lg hover:bg-gray-700 rounded text-white p-2 pl-4 pr-4 my-8 ml-2">
               <p className="font-semibold text-xs">Search</p>
             </button>
           </form>
@@ -136,6 +136,7 @@ function Explore() {
                       />
                       <p className='inline-block p-1'>234</p>
                     </div>
+                    <p className="mt-2">{post.description}</p>
                   </article>
                 </Link>
               </div>

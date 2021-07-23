@@ -3,7 +3,7 @@ import useFetch from "../hooks/useFetch";
 import { TopicContext } from "./TopicContext";
 import { AuthContext, useAuth } from "./Auth";
 import axios from "axios";
-//import { ProfileContext } from "./ProfileContext";
+import { UserContext } from "./UserContext";
 import { Link } from "react-router-dom";
 import btn_like from "../assets/btn_like.svg";
 import btn_comment from "../assets/btn_comment.svg";
@@ -12,32 +12,27 @@ function Home() {
 	const [posts, setPosts] = useState([]);
 
 	const auth = useContext(AuthContext);
-  const { authToken, loggedIn } = useAuth();
-  console.log(authToken);
-  console.log(loggedIn);
-	//console.log(auth.authToken);
 
 	//"https://learning.anshor.co/api/topic"
 
-
 	useEffect(() => {
-    const fetchPost = async () => {
-    const requestOptions = {
+		const fetchPost = async () => {
+			const requestOptions = {
 				mode: "no-cors",
 				headers: {
 					Authorization: `Bearer ${auth.authToken}`,
 				},
 			};
 
-		try {
-			const response = await axios.get("/topic", requestOptions);
-			const posts = await response.data.data.data;
-			setPosts(posts);
-			console.log(posts);
-		} catch (error) {
-			console.log(error);
-		}
-	};
+			try {
+				const response = await axios.get("/topic", requestOptions);
+				const posts = await response.data.data.data;
+				setPosts(posts);
+				console.log(posts);
+			} catch (error) {
+				console.log(error);
+			}
+		};
 		fetchPost();
 	}, [auth]);
 
@@ -87,6 +82,7 @@ function Home() {
 									/>
 									<p className='inline-block p-1'>234</p>
 								</div>
+								<p className='mt-2'>{post.description}</p>
 							</article>
 						</Link>
 					</div>

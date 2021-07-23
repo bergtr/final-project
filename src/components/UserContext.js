@@ -11,19 +11,15 @@ export const UserProvider = props => {
   }, []);
 
 
-  const match  = useRouteMatch();
-  console.log(match);
-
   const [users, setUsers] = useState({});
 
   const fetchUser = async () => {
-    const data = await fetch(`https://jsonplaceholder.typicode.com/users/${match.id}`);
-    const users = await data.json();
+    const data = await axios.get(`https://jsonplaceholder.typicode.com/users/`);
     console.log(users);
-    setUsers(users);
+    setUsers(data);
   };
     return (
-        <UserContext.Provider value={[users, setUsers]}>
+        <UserContext.Provider value={users}>
             {props.children}
         </UserContext.Provider>
     )

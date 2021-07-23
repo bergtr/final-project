@@ -49,6 +49,7 @@ function App() {
 					<Route path='/CreatePost' component={CreatePost} />
 					<Route path='/CreateRefs' component={CreateRefs} />
 					<Route path='/CreateTopic' component={CreateTopic} />
+          <Route path='/Settings' component={Settings} />
 				</PrivateRoute>
 			</Switch>
 		</div>

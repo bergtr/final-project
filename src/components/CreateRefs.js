@@ -7,7 +7,6 @@ import { useForm } from "react-hook-form";
 
 function CreateRefs() {
 
-  
   const { authToken } = useAuth()
   const history = useHistory();
 
@@ -44,7 +43,7 @@ function CreateRefs() {
   }
 
   return (
-    <div className="w-main ml-nav border-l border-r bg-lightgray">
+    <div className="w-main ml-nav h-screen border-l border-r bg-lightgray">
       <header className="container h-16 border-r border-b bg-white fixed">
         <h1 className="font-bold p-5 w-full">Create a Post</h1>
       </header>
@@ -53,12 +52,13 @@ function CreateRefs() {
           <input className="shadow appearance-none border rounded w-full mt-1 py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:ring-pinkred focus:border-pinkred" type="text" placeholder="Title"  {...register("title", { required: true })} />
           <input className="shadow appearance-none border rounded w-full mt-1 py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:ring-pinkred focus:border-pinkred" type="text" placeholder="URL" {...register("url", { required: true })} />
           <textarea id="about" name="about" rows="3" className="shadow appearance-none border rounded w-full py-2 px-3 focus:outline-none focus:ring-pinkred focus:border-pinkred mt-1 block w-full sm:text-sm border-lightgray rounded-md" placeholder="Description" type="text" placeholder="Description" {...register("description", { required: true })} />
+          <label className="text-lg py-2">Select which topic to add reference</label>
           <select className="mt-1 block w-full py-2 px-3 border border-lightgray bg-white rounded-md shadow-sm focus:outline-none focus:ring-pinkred focus:border-pinkred sm:text-sm" {...register("post", { required: true })}>
             {posts.map((post) => (
               <option key={post.id} value={post.id}>{post.title}</option>
             ))}
           </select>
-          <input className="cursor-pointer bg-pinkred m-2 text-center hover:bg-white hover:ring-2 hover:ring-pinkred text-white hover:text-pinkred focus:outline-none focus:ring-2 focus:ring-pinkred focus:ring-opacity-50  font-semibold w-1/2 h-8 rounded-full align-middle" type="submit"/>
+          <input className="cursor-pointer bg-pinkred text-white font-bold text-lg hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-pinkred focus:ring-opacity-50  font-semibold w-1/2 h-8 rounded-full align-middle" type="submit"/>
         </form>
       </main>
     </div>

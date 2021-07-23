@@ -45,7 +45,7 @@ function Topic() {
   console.log(posts[0]);
 
   return (
-    <div className="w-main h-full ml-nav border-l border-r bg-lightgray">
+    <div className="w-main h-screen ml-nav border-l border-r bg-lightgray">
       <header className="w-full shadow h-16 bg-white">
         <h1 className="font-bold p-5">Topic</h1>
       </header>

@@ -11,7 +11,7 @@ import { AuthContext } from "./Auth";
 function Profile() {
 
   const [profile, setProfile] = useState([]);
-  
+
   //"https://learning.anshor.co/api/topic"
 
   const auth = useContext(AuthContext);
@@ -53,16 +53,26 @@ function Profile() {
 
       <div className=" pt-16 h-max bg-white shadow p-4 h-auto flex">
         <div className="container flex flex-row">
-          <div className="my-8 p-3">
-            <div>
+          <div className="my-8 p-3 flex flex-wrap">
+            <img
+              src="https://via.placeholder.com/120"
+              alt="profile"
+              height="120px"
+              width="240px"
+              className="rounded-full"
+            />
+            <div className="flex flex-col ml-8 mt-2">
               <p className="font-semibold">
                 {profile.display_name}
               </p>
-              <p>3 Posts | 123 Followers | 321 Following</p>
-            </div>
-
-            <div className="cursor-pointer bg-pinkred m-2 text-center text-white font-semibold w-1/2 h-8 rounded-full align-middle">
-              Edit Profile
+              <p className="mt-2"> Birth Date : {profile.birth_date}</p>
+              <p className="mt-2"> City : {profile.city}</p>
+              <p className="mt-2"> Website : {profile.website}</p>
+              <p className="mt-2"> Phone : {profile.phone_number}</p>
+              <p className="mt-2"> Bio : {profile.bio}</p>
+              <div className="mt-3 cursor-pointer bg-pinkred text-white font-bold text-lg hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-pinkred focus:ring-opacity-50 text-center text-white font-semibold w-full h-8 rounded-full align-middle">
+                Edit Profile
+              </div>
             </div>
           </div>
         </div>

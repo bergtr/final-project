@@ -20,7 +20,6 @@ function Register() {
   const password = useRef({});
   password.current = watch("password", "");
 
-
   return (
     <div className="w-full flex flex-wrap">
       <div className="w-full md:w-1/2 flex flex-col">
@@ -72,7 +71,6 @@ function Register() {
         <img class="object-cover w-full h-screen hidden md:block" src="https://source.unsplash.com/IXUM4cJynP0" alt="Background" />
       </div>
     </div>
-
   );
 }
 
