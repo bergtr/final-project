@@ -1,7 +1,17 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
+import { useAuth } from "./Auth";
 
 function Navbar() {
+  const { logout } = useAuth();
+  const history = useHistory();
+
+  const handleLogOut = () => {
+    logout();
+    history.push('/Landing');
+  }
+
+
   return (
     <nav className="h-screen fixed w-side bg-white">
       <header className="h-16 bg-white">
@@ -68,7 +78,7 @@ function Navbar() {
           </div>
         </Link>
 
-        <Link to="/Logout">
+        <div onClick={handleLogOut}>
           <div className="inline-block cursor-pointer m-2 p-2 pl-4 text-left font-semibold align-middle hover:text-pinkred">
             <svg
               className="inline-block pr-1 fill-current"
@@ -87,7 +97,7 @@ function Navbar() {
             </svg>
             Logout
           </div>
-        </Link>
+        </div>
 
         <Link to="/CreatePost">
           <div className="cursor-pointer bg-pinkred m-2 text-center text-white font-semibold w-1/2 h-8 rounded-full align-middle">

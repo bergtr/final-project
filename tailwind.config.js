@@ -11,7 +11,7 @@ module.exports = {
       },
       colors: {
         pinkred: {
-          DEFAULT: '#EF7186'
+          DEFAULT: '#008DCB'
         },
         lightpink: {
           DEFAULT: '#EF7186'

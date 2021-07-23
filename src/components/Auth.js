@@ -2,6 +2,7 @@ import React, { useState, useEffect, createContext } from "react";
 import axios from "axios";
 
 export const AuthContext = createContext();
+export const useAuth = () => React.useContext(AuthContext);
 
 export const AuthProvider = (props) => {
     useEffect(() => {
@@ -9,10 +10,11 @@ export const AuthProvider = (props) => {
     }, []);
 
     const [authToken, setAuth] = useState('');
+    const [loggedIn, setLoggedIn] = useState(false);
+
     //"https://learning.anshor.co/api/topic"
 
     const getAuth = async () => {
-
         const reqBody = {
             username: 'antonx',
             password: 'password'
@@ -27,12 +29,28 @@ export const AuthProvider = (props) => {
         }
     };
 
-    // const getAuth = () =>{
-    //   setAuth('eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczpcL1wvYWt1Lm5kYWt0YXUuY29tXC9hcGlcL2xvZ2luIiwiaWF0IjoxNjI2ODU1NDU0LCJleHAiOjE2MjY4NTkwNTQsIm5iZiI6MTYyNjg1NTQ1NCwianRpIjoicndBQXAxQURQYUhBMWpkaSIsInN1YiI6MywicHJ2IjoiMjNiZDVjODk0OWY2MDBhZGIzOWU3MDFjNDAwODcyZGI3YTU5NzZmNyJ9.sY7MvvuqjFOu6vxIQ4D_UjQjilJO6QOFcieRmK_XgTE')
-    // }
+    const login = () => {
+      setLoggedIn(true);
+    };
+
+    const logout = () => {
+      setLoggedIn(false);
+    }
+
+    const signIn = () => {
+      setLoggedIn(true);
+    }
+
+    const authContextValue ={
+      authToken,
+      loggedIn,
+      login,
+      logout,
+      signIn
+    }
 
     return (
-        <AuthContext.Provider value={[authToken, setAuth]}>
+        <AuthContext.Provider value={authContextValue}>
             {props.children}
         </AuthContext.Provider>
     );

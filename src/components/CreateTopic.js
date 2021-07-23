@@ -1,5 +1,5 @@
-import React, {useContext} from "react";
-import { AuthContext } from "./Auth";
+import React from "react";
+import { useAuth } from "./Auth";
 import { useForm} from "react-hook-form";
 import { useHistory } from "react-router";
 import axios from 'axios';
@@ -7,20 +7,17 @@ import axios from 'axios';
 function CreateTopic() {
 
 
-  const  authToken  = useContext(AuthContext);
+  const { authToken } = useAuth();
   const history = useHistory()
-
- 
 
   const { register, handleSubmit, formState: { errors } } = useForm();
   const onSubmit = data => {
     console.log(data);
-
     const requestOptions = {
       mode: "no-cors",
       headers: {
         Authorization:
-          `Bearer ${authToken[0]}`,
+          `Bearer ${authToken}`,
       },
     };
     axios.post('/topic', {

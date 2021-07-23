@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
 import useFetch from "../hooks/useFetch";
 import { TopicContext } from "./TopicContext";
-import { AuthContext } from "./Auth";
+import { AuthContext, useAuth } from "./Auth";
 import axios from "axios";
 //import { ProfileContext } from "./ProfileContext";
 import { Link } from "react-router-dom";
@@ -11,8 +11,11 @@ import btn_comment from "../assets/btn_comment.svg";
 function Home() {
 	const [posts, setPosts] = useState([]);
 
-	const  authToken  = useContext(AuthContext);
-	console.log(authToken);
+	const auth = useContext(AuthContext);
+  const { authToken, loggedIn } = useAuth();
+  console.log(authToken);
+  console.log(loggedIn);
+	//console.log(auth.authToken);
 
 	//"https://learning.anshor.co/api/topic"
 
@@ -22,7 +25,7 @@ function Home() {
     const requestOptions = {
 				mode: "no-cors",
 				headers: {
-					Authorization: `Bearer ${authToken[0]}`,
+					Authorization: `Bearer ${auth.authToken}`,
 				},
 			};
 
@@ -36,7 +39,7 @@ function Home() {
 		}
 	};
 		fetchPost();
-	}, [authToken]);
+	}, [auth]);
 
 	// const [posts] = useContext(TopicContext);
 
@@ -60,7 +63,7 @@ function Home() {
 								className='rounded-full'
 							/>
 							<p className='p-3'>
-								Username <span>username</span>
+								<span>Display Name</span>
 							</p>
 						</div>
 						<Link key={post.id} to={`/Topic/${post.id}`}>

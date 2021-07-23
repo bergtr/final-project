@@ -1,6 +1,6 @@
 import axios from "axios";
 import { TopicContext } from "./TopicContext";
-import { AuthContext } from "./Auth";
+import { AuthContext, useAuth } from "./Auth";
 import React, { useContext } from "react";
 import { useHistory } from "react-router";
 import { useForm } from "react-hook-form";
@@ -8,7 +8,7 @@ import { useForm } from "react-hook-form";
 function CreateRefs() {
 
   
-  const  authToken  = useContext(AuthContext);
+  const { authToken } = useAuth()
   const history = useHistory();
 
   const [posts] = useContext(TopicContext);
@@ -20,7 +20,7 @@ function CreateRefs() {
       mode: "no-cors",
       headers: {
         Authorization:
-          `Bearer ${authToken[0]}`,
+          `Bearer ${authToken}`,
       },
     };
 

@@ -1,5 +1,5 @@
 import { useEffect, useState, useContext } from "react";
-import { AuthContext } from "./Auth";
+import { AuthContext } from "../components/Auth";
 import axios from "axios";
 
 const useFetch = (url) => {

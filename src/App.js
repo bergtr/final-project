@@ -10,10 +10,13 @@ import Topic from "./components/Topic";
 import Landing from "./components/Landing";
 import { TopicProvider } from "./components/TopicContext";
 import { ReferenceProvider } from "./components/ReferenceContext";
-import { AuthContext, AuthProvider } from "./components/Auth";
+import { AuthContext, AuthProvider, useAuth } from "./components/Auth";
 import CreatePost from "./components/CreatePost";
 import CreateRefs from "./components/CreateRefs";
 import CreateTopic from "./components/CreateTopic";
+import PrivateRoute from "./components/PrivateRoute";
+import Register from "./components/Register";
+import { PrivateRoutes, PublicRoutes } from "./components/Routes";
 
 import {
 	BrowserRouter as Router,
@@ -25,96 +28,30 @@ import {
 	useLocation,
 } from "react-router-dom";
 
-const routes = [
-	{
-		path: "/",
-		exact: true,
-		sidebar: () => <Navbar />,
-		main: () => <Home />,
-	},
-	{
-		path: "/Explore",
-		sidebar: () => <Navbar />,
-		main: () => <Explore />,
-	},
-	{
-		path: "/CreatePost",
-		sidebar: () => <Navbar />,
-		main: () => <CreatePost />,
-	},
-	{
-		path: "/CreateRefs",
-		sidebar: () => <Navbar />,
-		main: () => <CreateRefs />,
-	},
-	{
-		path: "/CreateTopic",
-		sidebar: () => <Navbar />,
-		main: () => <CreateTopic />,
-	},
-	{
-		path: `/Topic/:id`,
-		sidebar: () => <Navbar />,
-		main: () => <Topic />,
-	},
-	{
-		path: "/Profile",
-		exact: true,
-		sidebar: () => <Navbar />,
-		main: () => <Profile />,
-	},
-	{
-		path: "/Profile/:id",
-		sidebar: () => <Navbar />,
-		main: () => <Users />,
-	},
-	{
-		path: "/Settings",
-		sidebar: () => <Navbar />,
-		main: () => <Settings />,
-	},
-  {
-    path: "/Landing",
-    sidebar: () => '',
-    main: () => <Landing />
-  }
-];
-
 function App() {
+	const { loggedIn } = useAuth();
+
 	return (
-		<AuthProvider>
-			<TopicProvider>
-				{/* <ReferenceProvider> */}
-					<div className='flex flex-row mx-4'>
-
-						<Switch>
-							{routes.map((route, index) => (
-								<Route
-									key={index}
-									path={route.path}
-									exact={route.exact}
-									children={<route.sidebar />}
-								/>
-							))}
-						</Switch>
-
-						{/* <Navbar /> */}
-						{/* <main className="w-main border-l border-r bg-lightgray"> */}
-
-						<Switch>
-							{routes.map((route, index) => (
-								<Route
-									key={index}
-									path={route.path}
-									exact={route.exact}
-									children={<route.main />}
-								/>
-							))}
-						</Switch>
-					</div>
-				{/* </ReferenceProvider> */}
-			</TopicProvider>
-		</AuthProvider>
+		<div className='flex flex-row mx-4'>
+			<Switch>
+				<Route path='/Landing'>
+					<Landing />
+				</Route>
+        <Route path="/Register">
+          <Register />
+        </Route>
+				<PrivateRoute>
+					<Navbar />
+					<Route exact path='/' component={Home} />
+					<Route path='/Explore' component={Explore} />
+					<Route path='/Profile' component={Profile} />
+					<Route path='/Topic/:id' component={Topic} />
+					<Route path='/CreatePost' component={CreatePost} />
+					<Route path='/CreateRefs' component={CreateRefs} />
+					<Route path='/CreateTopic' component={CreateTopic} />
+				</PrivateRoute>
+			</Switch>
+		</div>
 	);
 }
 

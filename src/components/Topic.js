@@ -3,14 +3,14 @@ import axios from "axios";
 import { ReferenceContext } from "./ReferenceContext";
 import { TopicContext } from "./TopicContext";
 import { Link, useRouteMatch } from "react-router-dom";
-import { AuthContext } from "./Auth";
+import { AuthContext, useAuth } from "./Auth";
 import Reference from "./Reference";
 
 function Topic() {
 
   const [references, setReference] = useState([]);
   //const [posts, setPosts] = useState([]);
-  const authToken = useContext(AuthContext);
+  const { authToken } = useAuth()
   const [posts] = useContext(TopicContext);
 
   useEffect(() => {
@@ -24,7 +24,7 @@ function Topic() {
         mode: "no-cors",
         headers: {
           Authorization:
-            `Bearer ${authToken[0]}`,
+            `Bearer ${authToken}`,
         },
       };
       const response = await axios.get(`/note`, requestOptions);

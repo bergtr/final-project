@@ -14,7 +14,7 @@ function Profile() {
   
   //"https://learning.anshor.co/api/topic"
 
-  const authToken = useContext(AuthContext);
+  const auth = useContext(AuthContext);
 
   const fetchPost = async () => {
 
@@ -23,7 +23,7 @@ function Profile() {
         mode: "no-cors",
         headers: {
           Authorization:
-            `Bearer ${authToken[0]}`,
+            `Bearer ${auth.authToken}`,
         },
       };
       const response = await axios.get("/profile", requestOptions);
@@ -82,7 +82,7 @@ function Profile() {
                   className="rounded-full"
                 />
                 <p className="p-3">
-                  Username <span className>@username</span>
+                  Username <span>@username</span>
                 </p>
               </div>
               <Link to={`/Topic/${post.id}`}>

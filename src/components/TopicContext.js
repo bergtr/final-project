@@ -5,8 +5,8 @@ export const TopicContext = createContext();
 
 export const TopicProvider = (props) => {
   const [posts, setPosts] = useState([]);
-  const authToken = useContext(AuthContext);
-  console.log(authToken);
+  const auth = useContext(AuthContext);
+  console.log(auth);
     
   useEffect(() => {
     
@@ -15,7 +15,7 @@ export const TopicProvider = (props) => {
         mode: "no-cors",
         headers: {
           Authorization:
-            `Bearer ${authToken[0]}`,
+            `Bearer ${auth.authToken}`,
         },
       };
   
@@ -31,7 +31,7 @@ export const TopicProvider = (props) => {
 
     fetchPost();
     
-  },[authToken]);
+  },[auth.authToken]);
 
  
 
