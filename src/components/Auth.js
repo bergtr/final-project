@@ -19,7 +19,11 @@ export const AuthProvider = (props) => {
   const getAuth = async (username, password) => {
     const reqBody = {
       username: username,
-      password: password
+      password: password,
+      headers: {
+        'Access-Control-Allow-Origin': '*',
+        'Content-Type': 'application/json',
+      },
     }
     try {
       const response = await axios.post('/login', reqBody)
@@ -75,15 +79,18 @@ export const AuthProvider = (props) => {
       email: email,
       username: username,
       password: password,
-      display_name: display_name
+      display_name: display_name,
+      headers: {
+        'Access-Control-Allow-Origin': '*',
+        'Content-Type': 'application/json',
+      },
     }
+    console.log(reqBody);
     try {
       const response = await axios.post('/register', reqBody)
-
-      console.log(response.data);
       if (response.data.errorCode === '00') {
         const authToken = await response.data.data.token;
-        console.log(authToken);
+        //console.log(authToken);
         setAuth(authToken);
         setLoggedIn(true);
         alert(response.data.message);

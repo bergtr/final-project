@@ -1,6 +1,6 @@
 import React from "react";
 import { useAuth } from "./Auth";
-import { useForm} from "react-hook-form";
+import { useForm } from "react-hook-form";
 import { useHistory } from "react-router";
 import axios from 'axios';
 

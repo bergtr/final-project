@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React, { useRef, useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { Link, useHistory } from "react-router-dom";
 import { useAuth } from "./Auth";
@@ -7,18 +7,21 @@ function Register() {
 
 
   const history = useHistory();
-  const { signIn } = useAuth();
+  const { signIn, loggedIn } = useAuth();
 
   const { register, watch, handleSubmit, formState: { errors } } = useForm();
   const onSubmit = data => {
-    signIn();
+    signIn(data.username, data.email, data.password, data.display_name);
     history.push('/');
     console.log(data);
   }
 
-  console.log(errors);
   const password = useRef({});
   password.current = watch("password", "");
+
+  useEffect(() => {
+    if (loggedIn) history.push('/')
+  }, [loggedIn, history])
 
   return (
     <div className="w-full flex flex-wrap">
@@ -32,7 +35,7 @@ function Register() {
               <label className="text-lg">Username</label>
               <input type="text"
                 className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:ring-pinkred focus:border-pinkred"
-                placeholder="Username" {...register("Username", { required: true, maxLength: 80 })}
+                placeholder="Username" {...register("username", { required: true, maxLength: 80 })}
               />
             </div>
 
@@ -41,7 +44,7 @@ function Register() {
               <input type="email"
                 className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:ring-pinkred focus:border-pinkred"
                 placeholder="Email"
-                {...register("Email", { required: true })}
+                {...register("email", { required: true })}
               />
             </div>
 
