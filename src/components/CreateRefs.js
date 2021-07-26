@@ -32,14 +32,13 @@ function CreateRefs() {
     }, requestOptions)
       .then(function (response) {
         console.log(response);
-        alert('success dude!');
+        alert('success!');
         history.push('/');
       })
       .catch(function (error) {
         console.log(error);
         alert(error);
       });
-
   }
 
   return (

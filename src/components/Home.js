@@ -61,7 +61,7 @@ function Home() {
 								<span>Display Name</span>
 							</p>
 						</div>
-						<Link key={post.id} to={`/Topic/${post.id}`}>
+						<Link key={post.id} to={`/topic/${post.id}`}>
 							<article className='flex flex-col m-1'>
 								<h2 className='font-semibold m-2'>{post.title}</h2>
 								<div>
@@ -72,7 +72,7 @@ function Home() {
 										src={btn_like}
 										alt=''
 									/>
-									<p className='inline-block p-1'>123</p>
+									<p className='inline-block p-1'>{post.likes_count}</p>
 									<img
 										className='inline-block p-1'
 										height='32px'
@@ -80,7 +80,7 @@ function Home() {
 										src={btn_comment}
 										alt=''
 									/>
-									<p className='inline-block p-1'>234</p>
+									<p className='inline-block p-1'>{post.comments_count}</p>
 								</div>
 								<p className='mt-2'>{post.description}</p>
 							</article>

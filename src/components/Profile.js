@@ -82,7 +82,7 @@ function Profile() {
 
         <div>
           {posts.map((post) => (
-            <div className="p-6 mb-2 bg-white">
+            <div key={post.id} className="p-6 mb-2 bg-white">
               <div className="flex flex-row">
                 <img
                   src="https://via.placeholder.com/55"

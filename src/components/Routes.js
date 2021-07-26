@@ -34,7 +34,7 @@ export const PrivateRoute = () => {
         <Route exact path='/' component={Home} />
         <Route path='/Explore' component={Explore} />
         <Route path='/Profile' component={Profile} />
-        <Route path='/Topic/:id' component={Topic} />
+        <Route path='/topic/:id' component={Topic} />
         <Route path='/CreatePost' component={CreatePost} />
         <Route path='/CreateRefs' component={CreateRefs} />
         <Route path='/CreateTopic' component={CreateTopic} />

@@ -1,18 +1,21 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { useHistory, Link } from "react-router-dom";
 import { useAuth } from "./Auth";
 
 function Login() {
   const history = useHistory();
-  const { login } = useAuth();
+  const { login, loggedIn } = useAuth();
   const { register, handleSubmit, formState: { errors } } = useForm();
   const onSubmit = data => {
-    console.log(data);
-    login();
-    history.push('/');
+    login(data.username, data.password);
+    history.push('/')
   }
   console.log(errors);
+
+  useEffect(() => {
+    if (loggedIn) history.push('/')
+  }, [loggedIn, history])
 
   return (
     <div className="w-full flex flex-wrap">
@@ -21,15 +24,14 @@ function Login() {
         <div className="flex flex-col justify-center md:justify-start my-auto pt-8 md:pt-0 px-8 md:px-24 lg:px-32">
           <p class="text-center text-3xl">Welcome.</p>
           <form className="flex flex-col pt-3 md:pt-8" onSubmit={handleSubmit(onSubmit)}>
-
             <div className="flex flex-col pt-4">
               <label className="text-lg">Username</label>
-              <input type="text" className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:ring-pinkred focus:border-pinkred" placeholder="Username" {...register("Username", { required: true, maxLength: 80 })} />
+              <input type="text" className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:ring-pinkred focus:border-pinkred" placeholder="Username" {...register("username", { required: true, maxLength: 80 })} />
             </div>
 
             <div className="flex flex-col pt-4">
               <label className="text-lg">Password</label>
-              <input type="password" className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:ring-pinkred focus:border-pinkred" placeholder="Password" {...register("Password", { required: true, min: 6, maxLength: 100 })} />
+              <input type="password" className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:ring-pinkred focus:border-pinkred" placeholder="Password" {...register("password", { required: true, min: 6, maxLength: 100 })} />
             </div>
 
             <button className="bg-pinkred text-white font-bold text-lg hover:bg-gray-700 p-2 mt-8" type="submit">Login</button>

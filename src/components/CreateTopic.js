@@ -27,7 +27,7 @@ function CreateTopic() {
     }, requestOptions)
       .then(function (response) {
         console.log(response);
-        alert('success dude!');
+        alert('success!');
         history.push('/');
       })
       .catch(function (error) {

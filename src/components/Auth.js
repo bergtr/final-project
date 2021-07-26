@@ -1,57 +1,111 @@
 import React, { useState, useEffect, createContext } from "react";
 import axios from "axios";
+import { useHistory } from "react-router-dom";
 
 export const AuthContext = createContext();
 export const useAuth = () => React.useContext(AuthContext);
 
 export const AuthProvider = (props) => {
-    useEffect(() => {
-        getAuth();
-    }, []);
+  // useEffect(() => {
+  //     getAuth();
+  // }, []);
 
-    const [authToken, setAuth] = useState('');
-    const [loggedIn, setLoggedIn] = useState(false);
+  const [authToken, setAuth] = useState('');
+  const [loggedIn, setLoggedIn] = useState(false);
+  const history = useHistory();
 
-    //"https://learning.anshor.co/api/topic"
+  //"https://learning.anshor.co/api/topic"
 
-    const getAuth = async () => {
-        const reqBody = {
-            username: 'antonx',
-            password: 'password'
-        }
-        try {
-            const response = await axios.post('/login', reqBody)
-            const authToken = await response.data.data.token;
-            console.log(authToken);
-            setAuth(authToken);
-        } catch (error) {
-            throw new error ('something wrong with your login');
-        }
-    };
-
-    const login = () => {
-      setLoggedIn(true);
-    };
-
-    const logout = () => {
-      setLoggedIn(false);
+  const getAuth = async (username, password) => {
+    const reqBody = {
+      username: username,
+      password: password
     }
+    try {
+      const response = await axios.post('/login', reqBody)
 
-    const signIn = () => {
-      setLoggedIn(true);
+      console.log(response.data);
+      if (response.data.errorCode === '00') {
+        const authToken = await response.data.data.token;
+        console.log(authToken);
+        setAuth(authToken);
+        setLoggedIn(true);
+        alert(response.data.message);
+      } else {
+        alert(response.data.message);
+      }
+    } catch (error) {
+      console.log(error);
     }
+  };
 
-    const authContextValue ={
-      authToken,
-      loggedIn,
-      login,
-      logout,
-      signIn
+  const register = async (username, password) => {
+    const reqBody = {
+      username: username,
+      password: password
     }
+    try {
+      const response = await axios.post('/login', reqBody)
 
-    return (
-        <AuthContext.Provider value={authContextValue}>
-            {props.children}
-        </AuthContext.Provider>
-    );
+      console.log(response.data);
+      if (response.data.errorCode === '00') {
+        const authToken = await response.data.data.token;
+        console.log(authToken);
+        setAuth(authToken);
+        setLoggedIn(true);
+        alert(response.data.message);
+      } else {
+        alert(response.data.message);
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const login = async (user, pw) => {
+    getAuth(user, pw);
+  };
+
+  const logout = () => {
+    setLoggedIn(false);
+  }
+
+  const signIn = async (email, username, password, display_name) => {
+    const reqBody = {
+      email: email,
+      username: username,
+      password: password,
+      display_name: display_name
+    }
+    try {
+      const response = await axios.post('/register', reqBody)
+
+      console.log(response.data);
+      if (response.data.errorCode === '00') {
+        const authToken = await response.data.data.token;
+        console.log(authToken);
+        setAuth(authToken);
+        setLoggedIn(true);
+        alert(response.data.message);
+      } else {
+        alert(response.data.message);
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  const authContextValue = {
+    authToken,
+    loggedIn,
+    login,
+    logout,
+    signIn
+  }
+
+  return (
+    <AuthContext.Provider value={authContextValue}>
+      {props.children}
+    </AuthContext.Provider>
+  );
 };

@@ -8,6 +8,7 @@ import Reference from "./Reference";
 
 function Topic() {
 
+  const [comments, setComments] = useState([]);
   const [references, setReference] = useState([]);
   //const [posts, setPosts] = useState([]);
   const { authToken } = useAuth()
@@ -15,6 +16,7 @@ function Topic() {
 
   useEffect(() => {
     getReference();
+    getComments();
   }, [])
 
   const getReference = async () => {
@@ -35,12 +37,33 @@ function Topic() {
     }
   };
 
+  const getComments = async () => {
+
+    try {
+      const requestOptions = {
+        mode: "no-cors",
+        headers: {
+          Authorization:
+            `Bearer ${authToken}`,
+        },
+      };
+      const response = await axios.get(`${currentTopic[0].id}/comment`, requestOptions);
+      setComments(response.data.data);
+    } catch (error) {
+      console.log(error)
+    }
+  };
+
   const match = useRouteMatch();
   console.log(match);
   const topicReference = references.filter(reference => reference.topic_id == match.params.id)
   const currentTopic = posts.filter(post => post.id == match.params.id);
+  console.log(currentTopic[0].id);
   const isReferenced = topicReference.length > 0;
+  const isCommented = comments.length > 0;
   const isLoaded = currentTopic.length > 0;
+  console.log('comment payload :', comments);
+  console.log('is commented : ', isCommented);
   console.log(currentTopic);
   console.log(posts[0]);
 
@@ -59,17 +82,17 @@ function Topic() {
             className="rounded-full"
           />
           <p className="p-3">
-            Username <span className>@username</span>
+            Username <span>@username</span>
           </p>
         </div>
         {isLoaded ?
           <div>
-          <h1 className="font-semibold mt-2">{currentTopic[0].title}</h1>
-          <p className="text-lg">
-            {currentTopic[0].description}
-          </p>
-        </div>
-        :<h1>Loading</h1>
+            <h1 className="font-semibold mt-2">{currentTopic[0].title}</h1>
+            <p className="text-lg">
+              {currentTopic[0].description}
+            </p>
+          </div>
+          : <h1>Loading</h1>
         }
       </div>
       <header className="w-full shadow h-16 bg-white my-2 flex justify-between">
@@ -89,6 +112,23 @@ function Topic() {
           </div>
         ))
         : <p className="m-2">Oops, this topic doesnt have any reference yet</p>
+      }
+      <header className="w-full shadow h-16 bg-white my-2 flex justify-between">
+        <h1 className="font-bold p-5">Comment</h1>
+        <Link to="/CreateRefs">
+          <div className="cursor-pointer bg-pinkred  m-4 mt-4 mr-16 w-auto h-8 rounded-full align-right">
+            <p className="p-1 px-1 text-white font-semibold">Add Comment</p>
+          </div>
+        </Link>
+      </header>
+      {isCommented
+        ? comments.map((comment) => (
+          <div className="bg-white w-full shadow mx-auto m-2 p-3" key={comment.id}>
+            <h3 className="font-semibold">{comment.users.username}</h3>
+            <p>{comment.content}</p>
+          </div>
+        ))
+        : <p className="m-2">Oops, this topic doesnt have any comments yet</p>
       }
     </div>
   );

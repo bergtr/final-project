@@ -72,7 +72,7 @@ function Explore() {
                       Username <span>@username</span>
                     </p>
                   </div>
-                  <Link to={`/Topic/${searchResults.id}`}>
+                  <Link to={`/topic/${searchResults.id}`}>
                     <article className="flex flex-col m-1">
                       <h2 className="font-semibold m-2">{searchResults.title}</h2>
                       <div>
@@ -115,7 +115,7 @@ function Explore() {
                     Username <span>username</span>
                   </p>
                 </div>
-                <Link key={post.id} to={`/Topic/${post.id}`}>
+                <Link key={post.id} to={`/topic/${post.id}`}>
                   <article className='flex flex-col m-1'>
                     <h2 className='font-semibold m-2'>{post.title}</h2>
                     <div>
