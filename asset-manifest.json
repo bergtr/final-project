@@ -1,0 +1,24 @@
+{
+  "files": {
+    "main.css": "/final-project/static/css/main.da3e3334.chunk.css",
+    "main.js": "/final-project/static/js/main.9fe363bd.chunk.js",
+    "main.js.map": "/final-project/static/js/main.9fe363bd.chunk.js.map",
+    "runtime-main.js": "/final-project/static/js/runtime-main.1ccc2713.js",
+    "runtime-main.js.map": "/final-project/static/js/runtime-main.1ccc2713.js.map",
+    "static/js/2.15b14e8f.chunk.js": "/final-project/static/js/2.15b14e8f.chunk.js",
+    "static/js/2.15b14e8f.chunk.js.map": "/final-project/static/js/2.15b14e8f.chunk.js.map",
+    "static/js/3.05cd15e0.chunk.js": "/final-project/static/js/3.05cd15e0.chunk.js",
+    "static/js/3.05cd15e0.chunk.js.map": "/final-project/static/js/3.05cd15e0.chunk.js.map",
+    "index.html": "/final-project/index.html",
+    "static/css/main.da3e3334.chunk.css.map": "/final-project/static/css/main.da3e3334.chunk.css.map",
+    "static/js/2.15b14e8f.chunk.js.LICENSE.txt": "/final-project/static/js/2.15b14e8f.chunk.js.LICENSE.txt",
+    "static/media/btn_comment.ba6ca17c.svg": "/final-project/static/media/btn_comment.ba6ca17c.svg",
+    "static/media/btn_like.15554673.svg": "/final-project/static/media/btn_like.15554673.svg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.1ccc2713.js",
+    "static/js/2.15b14e8f.chunk.js",
+    "static/css/main.da3e3334.chunk.css",
+    "static/js/main.9fe363bd.chunk.js"
+  ]
+}
