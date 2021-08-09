@@ -39,15 +39,15 @@ function Home() {
 	// const [posts] = useContext(TopicContext);
 
 	return (
-		<div className='w-main ml-nav border-l border-r bg-lightgray'>
-			<header className='container h-16 border-r border-b bg-white fixed'>
-				<h1 className='font-bold p-5 w-full'>Home</h1>
+		<div className='w-full ml-nav border-r bg-white'>
+			<header className='h-16 w-full border-l border-r border-b bg-baseblue fixed'>
+				<h1 className='font-bold p-5 text-white'>Home</h1>
 			</header>
-			<main className='pt-16 h-max'>
+			<main className='pt-16 h-max w-full border-l bg-baseblue flex flex-wrap'>
 				{posts.map((post) => (
 					<div
 						key={post.id}
-						className='p-6 mb-2 bg-white hover:bg-pinkred hover:text-white'
+						className='p-6 m-4 bg-darkblue flex-auto hover:bg-chonkyblue hover:text-white rounded-lg cursor-pointer'
 					>
 						<div className='flex flex-row'>
 							<img
@@ -57,13 +57,13 @@ function Home() {
 								width='55px'
 								className='rounded-full'
 							/>
-							<p className='p-3'>
+							<p className='p-3 text-white'>
 								<span>Display Name</span>
 							</p>
 						</div>
 						<Link key={post.id} to={`/topic/${post.id}`}>
 							<article className='flex flex-col m-1'>
-								<h2 className='font-semibold m-2'>{post.title}</h2>
+								<h2 className='font-semibold m-2 text-white'>{post.title}</h2>
 								<div>
 									<img
 										className='inline-block p-1'
@@ -72,7 +72,7 @@ function Home() {
 										src={btn_like}
 										alt=''
 									/>
-									<p className='inline-block p-1'>{post.likes_count}</p>
+									<p className='inline-block p-1 text-white'>{post.likes_count}</p>
 									<img
 										className='inline-block p-1'
 										height='32px'
@@ -80,9 +80,9 @@ function Home() {
 										src={btn_comment}
 										alt=''
 									/>
-									<p className='inline-block p-1'>{post.comments_count}</p>
+									<p className='inline-block p-1 text-white'>{post.comments_count}</p>
 								</div>
-								<p className='mt-2'>{post.description}</p>
+								<p className='mt-2 text-white'>{post.description}</p>
 							</article>
 						</Link>
 					</div>

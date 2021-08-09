@@ -92,11 +92,11 @@ function Topic() {
   };
 
   return (
-    <div className="w-main h-screen ml-nav border-l border-r bg-lightgray">
-      <header className="w-full shadow h-16 bg-white">
-        <h1 className="font-bold p-5">Topic</h1>
+    <div className="w-full ml-nav border-l border-r bg-hie">
+      <header className="w-full shadow h-16 bg-baseblue">
+        <h1 className="font-bold text-white p-5">Topic</h1>
       </header>
-      <div className="bg-white w-full mx-auto p-3">
+      <div className="bg-darkblue w-full mx-auto p-3 text-white">
         <div className="flex flex-row mt-6">
           <img
             src="https://via.placeholder.com/55"
@@ -119,17 +119,17 @@ function Topic() {
           : <h1>Loading</h1>
         }
       </div>
-      <header className="w-full shadow h-16 bg-white my-2 flex justify-between">
+      <header className="w-full shadow h-16 bg-baseblue border-b border-t my-2 flex justify-between">
         <h1 className="font-bold p-5">Reference</h1>
         <Link to="/CreateRefs">
-          <div className="cursor-pointer bg-pinkred  m-4 mt-4 mr-16 w-auto h-8 rounded-full align-right">
+          <div className="cursor-pointer bg-darkblue hover:bg-chonkyblue m-4 mt-4 mr-16 w-40 pl-6 h-8 rounded-full align-right">
             <p className="p-1 px-1 text-white font-semibold">Add Reference</p>
           </div>
         </Link>
       </header>
       {isReferenced
         ? topicReference.map((reference) => (
-          <div className="bg-white w-full shadow mx-auto m-2 p-3 hover:bg-pinkred hover:text-white cursor-pointer" key={reference.id}>
+          <div className="bg-darkblue flex-auto hover:bg-chonkyblue w-full shadow mx-auto m-2 p-3 text-white cursor-pointer" key={reference.id}>
             <h3 className="font-semibold">{reference.title}</h3>
             <p>{reference.description}</p>
             <a href="#">{reference.url}</a>
@@ -137,20 +137,20 @@ function Topic() {
         ))
         : <p className="m-2">Oops, this topic doesnt have any reference yet</p>
       }
-      <header className="w-full shadow h-16 bg-white my-2 flex justify-between">
+      <header className="w-full shadow h-16 bg-baseblue border-b border-t my-2 flex justify-between">
         <h1 className="font-bold p-5">Comment</h1>
         <Link to="/CreateRefs">
         </Link>
       </header>
 
-      <form className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4" onSubmit={handleSubmit(onSubmit)}>
-        <textarea id="about" name="about" rows="3" className="shadow appearance-none border rounded w-full py-2 px-3 focus:outline-none focus:shadow-outline focus:ring-pinkred focus:border-pinkred mt-1 block w-full sm:text-sm border-gray-300 rounded-md" placeholder="Add your comment here" {...register("content", { required: true })} />
-        <button className="cursor-pointer mt-2 bg-pinkred text-white font-bold text-lg hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-pinkred focus:ring-opacity-50  font-semibold w-1/2 h-8 rounded-full align-middle" type="submit">Comment</button>
+      <form className="bg-darkblue shadow-md rounded px-8 pt-6 pb-8 mb-4" onSubmit={handleSubmit(onSubmit)}>
+        <textarea id="about" name="about" rows="3" className="shadow appearance-none border rounded w-full py-2 px-3 focus:outline-none focus:shadow-outline focus:ring-baseblue focus:border-baseblue mt-1 block w-full sm:text-sm border-gray-300 rounded-md" placeholder="Add your comment here" {...register("content", { required: true })} />
+        <button className="cursor-pointer mt-2 bg-baseblue text-white font-bold text-lg hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-baseblue focus:ring-opacity-50  font-semibold w-1/2 h-8 rounded-full align-middle" type="submit">Comment</button>
       </form>
 
       {isCommented
         ? comments.map((comment) => (
-          <div className="bg-white w-full shadow mx-auto m-2 p-3" key={comment.id}>
+          <div className="bg-darkblue w-full text-white shadow mx-auto border-t p-3" key={comment.id}>
             <h3 className="font-semibold">{comment.users.username}</h3>
             <p>{comment.content}</p>
           </div>

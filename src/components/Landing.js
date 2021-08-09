@@ -5,7 +5,7 @@ import Register from "./Register";
 function Landing() {
 
   return (
-    <div className='w-full flex flex-wrap'>
+    <div className='w-full flex flex-wrap bg-white'>
       <Login />
     </div>
   )

@@ -32,7 +32,7 @@ function App() {
 	const { loggedIn } = useAuth();
 
 	return (
-		<div className='flex flex-row mx-4'>
+		<div className='flex flex-row bg-baseblue'>
 			<Switch>
 				<Route path='/Landing'>
 					<Landing />

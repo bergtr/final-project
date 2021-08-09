@@ -34,7 +34,7 @@ function Login() {
               <input type="password" className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:ring-pinkred focus:border-pinkred" placeholder="Password" {...register("password", { required: true, min: 6, maxLength: 100 })} />
             </div>
 
-            <button className="bg-pinkred text-white font-bold text-lg hover:bg-gray-700 p-2 mt-8" type="submit">Login</button>
+            <button className="bg-baseblue text-white font-bold text-lg hover:bg-gray-700 p-2 mt-8" type="submit">Login</button>
           </form>
           <div class="text-center pt-12 pb-12">
             <p>Don't have an account? <Link to='/Register' class="underline font-semibold">Register here.</Link></p>

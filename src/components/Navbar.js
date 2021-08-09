@@ -11,15 +11,14 @@ function Navbar() {
     history.push('/Landing');
   }
 
-
   return (
-    <nav className="h-screen fixed w-side bg-white">
-      <header className="h-16 bg-white">
-        <h1 className="font-bold p-5">App Name</h1>
+    <nav className="h-full fixed w-side bg-baseblue">
+      <header className="h-16 bg-baseblue">
+        <h1 className="font-bold p-5 text-white">App Name</h1>
       </header>
       <div className="container mt-4 flex flex-col content-around w-full">
         <Link to="/">
-          <div className="inline-block cursor-pointer m-2 p-2 text-left font-semibold align-middle focus:text-pinkred hover:text-pinkred">
+          <div className="inline-block cursor-pointer m-2 p-2 text-left font-semibold align-middle text-white focus:text-white hover:text-lightgray">
             <svg
               className="inline-block pr-1 fill-current"
               width="45px"
@@ -34,7 +33,7 @@ function Navbar() {
         </Link>
 
         <Link to="/Explore">
-          <div className="inline-block cursor-pointer m-2 p-2 text-left font-semibold align-middle focus:text-pinkred hover:text-pinkred">
+          <div className="inline-block cursor-pointer m-2 p-2 text-left font-semibold align-middle text-white focus:text-white hover:text-lightgray">
             <svg
               className="inline-block pr-1 fill-current"
               width="45px"
@@ -49,7 +48,7 @@ function Navbar() {
         </Link>
 
         <Link to="/Profile">
-          <div className="inline-block cursor-pointer m-2 p-2 text-left font-semibold align-middle focus:text-pinkred hover:text-pinkred">
+          <div className="inline-block cursor-pointer m-2 p-2 text-left font-semibold align-middle text-white focus:text-white hover:text-lightgray">
             <svg
               className="inline-block pr-1 fill-current"
               width="45px"
@@ -64,7 +63,7 @@ function Navbar() {
         </Link>
 
         <Link to="/Settings">
-          <div className="inline-block cursor-pointer m-2 p-2 text-left font-semibold align-middle hover:text-pinkred">
+          <div className="inline-block cursor-pointer m-2 p-2 text-left font-semibold align-middle text-white hover:text-lightgray">
             <svg
               className="inline-block pr-1 fill-current"
               width="45px"
@@ -79,7 +78,7 @@ function Navbar() {
         </Link>
 
         <div onClick={handleLogOut}>
-          <div className="inline-block cursor-pointer m-2 p-2 pl-4 text-left font-semibold align-middle hover:text-pinkred">
+          <div className="inline-block cursor-pointer m-2 p-2 pl-4 text-left font-semibold align-middle text-white hover:text-lightgray">
             <svg
               className="inline-block pr-1 fill-current"
               width="45px"
@@ -100,7 +99,7 @@ function Navbar() {
         </div>
 
         <Link to="/CreatePost">
-          <div className="cursor-pointer bg-pinkred m-2 text-center text-white font-semibold w-1/2 h-8 rounded-full align-middle">
+          <div className="cursor-pointer font-bold bg-darkblue hover:bg-chonkyblue m-2 ml-4 pt-0.5 text-center text-white font-semibold h-8 rounded-full align-middle">
             Create Post
           </div>
         </Link>

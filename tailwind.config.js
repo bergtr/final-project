@@ -10,8 +10,17 @@ module.exports = {
         'full'  : '100%'
       },
       colors: {
-        pinkred: {
-          DEFAULT: '#008DCB'
+        baseblue: {
+          DEFAULT: '#72A2FA'
+        },
+        darkblue: {
+          DEFAULT: '#1B6AFC'
+        },
+        lessdarkblue: {
+           DEFAULT: '#085EFB'
+        },
+        chonkyblue: {
+          DEFAULT: '#4787FC'
         },
         lightpink: {
           DEFAULT: '#EF7186'
